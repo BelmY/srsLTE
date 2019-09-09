@@ -1,0 +1,83 @@
+The system is: Linux - 4.4.0-18362-Microsoft - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/3.10.2/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/3.10.2/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ccca8/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ccca8.dir/build.make CMakeFiles/cmTC_ccca8.dir/build
+make[1]: Entering directory '/mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ccca8.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_ccca8.dir/testCCompiler.c.o   -c /mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_ccca8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ccca8.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_ccca8.dir/testCCompiler.c.o  -o cmTC_ccca8 
+make[1]: Leaving directory '/mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_451ab/fast"
+/usr/bin/make -f CMakeFiles/cmTC_451ab.dir/build.make CMakeFiles/cmTC_451ab.dir/build
+make[1]: Entering directory '/mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_451ab.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTC_451ab.dir/testCXXCompiler.cxx.o -c /mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_451ab
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_451ab.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_451ab.dir/testCXXCompiler.cxx.o  -o cmTC_451ab 
+make[1]: Leaving directory '/mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_903d6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_903d6.dir/build.make CMakeFiles/cmTC_903d6.dir/build
+make[1]: Entering directory '/mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_903d6.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_903d6.dir/CheckIncludeFile.c.o   -c /mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_903d6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_903d6.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_903d6.dir/CheckIncludeFile.c.o  -o cmTC_903d6 
+make[1]: Leaving directory '/mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_670b4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_670b4.dir/build.make CMakeFiles/cmTC_670b4.dir/build
+make[1]: Entering directory '/mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_670b4.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_670b4.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_670b4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_670b4.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_670b4.dir/CheckFunctionExists.c.o  -o cmTC_670b4 -lpthread 
+make[1]: Leaving directory '/mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+

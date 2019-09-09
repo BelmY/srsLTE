@@ -1,21 +1,6 @@
 /*
- * Copyright 2013-2019 Software Radio Systems Limited
- *
- * This file is part of srsLTE.
- *
- * srsLTE is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of
- * the License, or (at your option) any later version.
- *
- * srsLTE is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
- *
- * A copy of the GNU Affero General Public License can be found in
- * the LICENSE file in the top-level directory of this distribution
- * and at http://www.gnu.org/licenses/.
+ * @Author: Gines Garcia Aviles
+ *  -   github. @GinesGarcia
  *
  */
 
@@ -36,12 +21,12 @@ namespace srsenb {
  *
  *****************************************************************/
 
-void dl_metric_rr::set_log(srslte::log* log_)
+void dl_metric_slicing::set_log(srslte::log* log_)
 {
   log_h = log_;
 }
 
-void dl_metric_rr::sched_users(std::map<uint16_t, sched_ue>& ue_db, sched::dl_tti_sched_t* tti_sched)
+void dl_metric_slicing::sched_users(std::map<uint16_t, sched_ue>& ue_db, sched::dl_tti_sched_t* tti_sched)
 {
   typedef std::map<uint16_t, sched_ue>::iterator it_t;
 
@@ -63,12 +48,13 @@ void dl_metric_rr::sched_users(std::map<uint16_t, sched_ue>& ue_db, sched::dl_tt
   }
 }
 
-bool dl_metric_rr::find_allocation(uint32_t nof_rbg, rbgmask_t* rbgmask)
+bool dl_metric_slicing::find_allocation(uint32_t nof_rbg, rbgmask_t* rbgmask, uint16_t rnti)
 {
     // Receives an initializes an empty mask to the maximum value.
     *rbgmask = ~(tti_alloc->get_dl_mask());
 
     //TODO: modified
+    /*
     rbgmask_t mask_to_apply(17);
     for (uint32_t i = 0; i < 17; ++i) {
         if (i < 7){
@@ -76,6 +62,14 @@ bool dl_metric_rr::find_allocation(uint32_t nof_rbg, rbgmask_t* rbgmask)
         }
     }
     (*rbgmask) &= mask_to_apply;
+    */
+
+    // Apply the mask only if the rnti is assigned to a slice
+    if (!assigned_slice.empty()){
+        if (assigned_slice.find(rnti) != assigned_slice.end()){
+            (*rbgmask) &= slices[assigned_slice[rnti]];
+        }
+    }
 
     uint32_t i = 0;
     for (; i < rbgmask->size() and nof_rbg > 0; ++i) {
@@ -90,7 +84,7 @@ bool dl_metric_rr::find_allocation(uint32_t nof_rbg, rbgmask_t* rbgmask)
 
 }
 
-dl_harq_proc* dl_metric_rr::allocate_user(sched_ue* user)
+dl_harq_proc* dl_metric_slicing::allocate_user(sched_ue* user)
 {
   if (tti_alloc->is_dl_alloc(user)) {
     return nullptr;
@@ -117,6 +111,7 @@ dl_harq_proc* dl_metric_rr::allocate_user(sched_ue* user)
       return NULL;
     }
 
+    //TODO: user tiene un parametro rnti que tendremos que pasar a find_allocation para poder sacar la mascara que le pertenece
     // If previous mask does not fit, find another with exact same number of rbgs
     size_t nof_rbg = retx_mask.count();
     if (find_allocation(nof_rbg, &retx_mask)) {
@@ -159,12 +154,12 @@ dl_harq_proc* dl_metric_rr::allocate_user(sched_ue* user)
  *
  *****************************************************************/
 
-void ul_metric_rr::set_log(srslte::log* log_)
+void ul_metric_slicing::set_log(srslte::log* log_)
 {
   log_h = log_;
 }
 
-void ul_metric_rr::sched_users(std::map<uint16_t, sched_ue>& ue_db, sched::ul_tti_sched_t* tti_sched)
+void ul_metric_slicing::sched_users(std::map<uint16_t, sched_ue>& ue_db, sched::ul_tti_sched_t* tti_sched)
 {
   typedef std::map<uint16_t, sched_ue>::iterator it_t;
 
@@ -206,7 +201,7 @@ void ul_metric_rr::sched_users(std::map<uint16_t, sched_ue>& ue_db, sched::ul_tt
  * @param alloc Found allocation. It is guaranteed that 0 <= alloc->L <= L
  * @return true if the requested allocation of size L was strictly met
  */
-bool ul_metric_rr::find_allocation(uint32_t L, ul_harq_proc::ul_alloc_t* alloc)
+bool ul_metric_slicing::find_allocation(uint32_t L, ul_harq_proc::ul_alloc_t* alloc)
 {
   const prbmask_t* used_rb = &tti_alloc->get_ul_mask();
   bzero(alloc, sizeof(ul_harq_proc::ul_alloc_t));
@@ -237,7 +232,7 @@ bool ul_metric_rr::find_allocation(uint32_t L, ul_harq_proc::ul_alloc_t* alloc)
   return alloc->L == L; 
 }
 
-ul_harq_proc* ul_metric_rr::allocate_user_retx_prbs(sched_ue *user)
+ul_harq_proc* ul_metric_slicing::allocate_user_retx_prbs(sched_ue *user)
 {
   if (tti_alloc->is_ul_alloc(user)) {
     return NULL;
@@ -270,7 +265,7 @@ ul_harq_proc* ul_metric_rr::allocate_user_retx_prbs(sched_ue *user)
   return NULL;
 }
 
-ul_harq_proc* ul_metric_rr::allocate_user_newtx_prbs(sched_ue* user)
+ul_harq_proc* ul_metric_slicing::allocate_user_newtx_prbs(sched_ue* user)
 {
   if (tti_alloc->is_ul_alloc(user)) {
     return NULL;

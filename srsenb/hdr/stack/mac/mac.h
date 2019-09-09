@@ -140,9 +140,12 @@ private:
   bool          started; 
 
   /* Scheduler unit */
-  sched            scheduler; 
-  dl_metric_rr     sched_metric_dl_rr;
-  ul_metric_rr     sched_metric_ul_rr;
+  sched            scheduler;
+  //TODO: modified
+  //dl_metric_rr     sched_metric_dl_rr;
+  //ul_metric_rr     sched_metric_ul_rr;
+  dl_metric_slicing     sched_metric_dl_slicing;
+  ul_metric_slicing     sched_metric_ul_slicing;
   sched_interface::cell_cfg_t cell_config;
   
   

@@ -87,8 +87,10 @@ bool mac::init(const mac_args_t&        args_,
 
     scheduler.init(rrc, log_h);
     // Set default scheduler (RR)
-    scheduler.set_metric(&sched_metric_dl_rr, &sched_metric_ul_rr);
-    
+    //TODO: modified
+    //scheduler.set_metric(&sched_metric_dl_rr, &sched_metric_ul_rr);
+      scheduler.set_metric(&sched_metric_dl_slicing, &sched_metric_ul_slicing);
+
     // Set default scheduler configuration 
     scheduler.set_sched_cfg(&args.sched);
     
