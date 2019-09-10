@@ -32,9 +32,10 @@
 #include "srslte/common/tti_sync_cv.h"
 #include "srslte/common/mac_pcap.h"
 #include "scheduler.h"
-#include "scheduler_metric.h"
+//#include "scheduler_metric.h"
 #include "srslte/interfaces/enb_metrics_interface.h"
 #include "ue.h"
+#include "scheduler_metric_slicing.h"
 
 namespace srsenb {
   

@@ -81,8 +81,8 @@ private:
 // Create classes
 srslte::log_filter   log_out("ALL");
 srsenb::sched        my_sched;
-srsenb::dl_metric_rr dl_metric;
-srsenb::ul_metric_rr ul_metric;
+srsenb::dl_metric_slicing dl_metric;
+srsenb::ul_metric_slicing ul_metric;
 rlc my_rlc; 
 
 int main(int argc, char *argv[])

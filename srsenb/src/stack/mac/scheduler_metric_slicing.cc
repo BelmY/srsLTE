@@ -1,12 +1,12 @@
 /*
  * @Author: Gines Garcia Aviles
- *  -   github. @GinesGarcia
+ *  -   github: @GinesGarcia
  *
  */
 
-#include "srsenb/hdr/stack/mac/scheduler_metric.h"
 #include "srsenb/hdr/stack/mac/scheduler_harq.h"
 #include <string.h>
+#include <srsenb/hdr/stack/mac/scheduler_metric_slicing.h>
 
 #define Error(fmt, ...)   log_h->error(fmt, ##__VA_ARGS__)
 #define Warning(fmt, ...) log_h->warning(fmt, ##__VA_ARGS__)
@@ -114,7 +114,7 @@ dl_harq_proc* dl_metric_slicing::allocate_user(sched_ue* user)
     //TODO: user tiene un parametro rnti que tendremos que pasar a find_allocation para poder sacar la mascara que le pertenece
     // If previous mask does not fit, find another with exact same number of rbgs
     size_t nof_rbg = retx_mask.count();
-    if (find_allocation(nof_rbg, &retx_mask)) {
+    if (find_allocation(nof_rbg, &retx_mask, user->get_rnti())) {
       code = tti_alloc->alloc_dl_user(user, retx_mask, h->get_id());
       if (code == alloc_outcome_t::SUCCESS) {
         return h;
@@ -135,7 +135,7 @@ dl_harq_proc* dl_metric_slicing::allocate_user(sched_ue* user)
     if (req_bytes) {
       uint32_t  pending_rbg = user->prb_to_rbg(user->get_required_prb_dl(req_bytes, tti_alloc->get_nof_ctrl_symbols()));
       rbgmask_t newtx_mask(tti_alloc->get_dl_mask().size());
-      find_allocation(pending_rbg, &newtx_mask);
+      find_allocation(pending_rbg, &newtx_mask, user->get_rnti());
       if (newtx_mask.any()) { // some empty spaces were found
         code = tti_alloc->alloc_dl_user(user, newtx_mask, h->get_id());
         if (code == alloc_outcome_t::SUCCESS) {
@@ -291,4 +291,21 @@ ul_harq_proc* ul_metric_slicing::allocate_user_newtx_prbs(sched_ue* user)
   return NULL;
 }
 
+/*********************
+ * Slices management
+ *********************/
+
+    bool set_slice(int slice_id, rbgmask_t mask){
+        if (mask != NULL){
+            this.slices[slice_id] = mask;
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    bool assign_slice_to_user(int slice_id, uint16 rnti){
+        this.assigned_slice[rnti] = slice_id;
+    }
 }

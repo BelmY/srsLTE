@@ -19,6 +19,6 @@
 #
 
 file(GLOB SOURCES "*.cc")
-add_library(srsenb_mac STATIC ${SOURCES})
+add_library(srsenb_mac STATIC ${SOURCES} scheduler_api.cc)
 install(TARGETS srsenb_mac DESTINATION ${LIBRARY_DIR})
 

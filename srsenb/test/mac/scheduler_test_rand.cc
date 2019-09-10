@@ -962,8 +962,8 @@ void test_scheduler_rand(srsenb::sched_interface::cell_cfg_t cell_cfg, const sch
   // Create classes
   sched_tester         tester;
   srsenb::sched        my_sched;
-  srsenb::dl_metric_rr dl_metric;
-  srsenb::ul_metric_rr ul_metric;
+  srsenb::dl_metric_slicing dl_metric;
+  srsenb::ul_metric_slicing ul_metric;
 
   log_out.set_level(srslte::LOG_LEVEL_INFO);
 

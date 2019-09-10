@@ -34,7 +34,7 @@ if (RPATH)
 endif (RPATH)
 
 
-add_executable(srsenb main.cc enb.cc parser.cc enb_cfg_parser.cc metrics_stdout.cc metrics_csv.cc)
+add_executable(srsenb main.cc enb.cc parser.cc enb_cfg_parser.cc metrics_stdout.cc metrics_csv.cc ../hdr/stack/mac/scheduler_api.h)
 target_link_libraries(srsenb  srsenb_radio
                               srsenb_phy
                               srsenb_stack

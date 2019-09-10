@@ -28,6 +28,7 @@
 #include "srslte/common/log.h"
 #include "srslte/interfaces/enb_interfaces.h"
 #include "srslte/interfaces/sched_interface.h"
+#include "scheduler_api.h"
 #include <map>
 #include <mutex>
 #include <pthread.h>
@@ -79,6 +80,9 @@ public:
     /* Virtual methods for user metric calculation */
     virtual void set_log(srslte::log* log_)                                                  = 0;
     virtual void sched_users(std::map<uint16_t, sched_ue>& ue_db, dl_tti_sched_t* tti_sched) = 0;
+    //TODO: new
+    virtual bool set_slice(int slice_id, rbgmask_t mask) = 0;
+    virtual bool assign_slice_to_user(int slice_id, uint16 rnti) = 0;
   };
 
   
@@ -101,6 +105,10 @@ public:
 
   void init(rrc_interface_mac *rrc, srslte::log *log);
   void set_metric(metric_dl *dl_metric, metric_ul *ul_metric);
+  //TODO: nuevo
+  metric_dl* get_dl_metric(){return dl_metric;}
+  metric_ul* get_ul_metric(){return ul_metric;}
+
   int cell_cfg(cell_cfg_t *cell_cfg); 
   void set_sched_cfg(sched_args_t *sched_cfg);
   int reset();
@@ -157,6 +165,8 @@ protected:
   metric_ul *ul_metric; 
   srslte::log *log_h; 
   rrc_interface_mac *rrc;
+  //TODO: nuevo
+  scheduler_api* api;
 
   pthread_rwlock_t rwlock;
   std::mutex       sched_mutex;

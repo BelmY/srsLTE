@@ -581,10 +581,15 @@ sched::sched() : bc_aggr_level(0), rar_aggr_level(0), P(0), si_n_rbg(0), rar_n_r
   for (int i = 0; i < 3; i++) {
     bzero(rar_locations[i], sizeof(sched_ue::sched_dci_cce_t) * 10);
   }
-
   pthread_rwlock_init(&rwlock, NULL);
 
   reset();
+
+
+  //TODO: nuevo
+  api = new scheduler_api();
+  api->init(&this);
+
 }
 
 sched::~sched()

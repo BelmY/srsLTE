@@ -36,6 +36,9 @@ class dl_metric_slicing : public sched::metric_dl
 public:
   void set_log(srslte::log* log_) final;
   void sched_users(std::map<uint16_t, sched_ue>& ue_db, sched::dl_tti_sched_t* tti_sched) final;
+  //TODO: new
+  bool set_slice(int slice_id, rbgmask_t mask);
+  bool assign_slice_to_user(int slice_id, uint16 rnti);
 
 private:
   //bool          find_allocation(uint32_t nof_rbg, rbgmask_t* rbgmask);

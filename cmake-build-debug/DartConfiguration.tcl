@@ -4,14 +4,14 @@
 
 
 # Configuration directories and files
-SourceDirectory: /mnt/c/Users/Gines/Desktop/srsLTE
-BuildDirectory: /mnt/c/Users/Gines/Desktop/srsLTE/cmake-build-debug
+SourceDirectory: /tmp/tmp.Sx9ws9eKT0
+BuildDirectory: /tmp/tmp.Sx9ws9eKT0/cmake-build-debug
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: DESKTOP-AK0PRL3
+Site: smarthw-rsu1gpcu
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
 BuildName: Linux-c++
@@ -36,7 +36,7 @@ ScpCommand: /usr/bin/scp
 NightlyStartTime: 00:00:00 GMT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/mnt/c/Users/Gines/Desktop/srsLTE"
+ConfigureCommand: "/usr/bin/cmake" "/tmp/tmp.Sx9ws9eKT0"
 MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 
@@ -49,7 +49,7 @@ CVSCommand: CVSCOMMAND-NOTFOUND
 CVSUpdateOptions: -d -A -P
 
 # Subversion options
-SVNCommand: SVNCOMMAND-NOTFOUND
+SVNCommand: /usr/bin/svn
 SVNOptions: 
 SVNUpdateOptions: 
 
@@ -67,9 +67,9 @@ P4UpdateOptions:
 P4UpdateCustom: 
 
 # Generic update command
-UpdateCommand: /usr/bin/git
+UpdateCommand: 
 UpdateOptions: 
-UpdateType: git
+UpdateType: 
 
 # Compiler info
 Compiler: /usr/bin/c++
@@ -81,7 +81,7 @@ ValgrindCommand:
 ValgrindCommandOptions: --error-exitcode=1 --trace-children=yes --leak-check=full --show-reachable=yes --vex-guest-max-insns=25
 MemoryCheckType: 
 MemoryCheckSanitizerOptions: 
-MemoryCheckCommand: /usr/bin/valgrind
+MemoryCheckCommand: MEMORYCHECK_COMMAND-NOTFOUND
 MemoryCheckCommandOptions: 
 MemoryCheckSuppressionFile: 
 
