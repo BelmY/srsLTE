@@ -2153,6 +2153,19 @@ srsenb_stack/fast:
 .PHONY : srsenb_stack/fast
 
 #=============================================================================
+# Target rules for targets named srsenb_mac
+
+# Build rule for target.
+srsenb_mac: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 srsenb_mac
+.PHONY : srsenb_mac
+
+# fast build rule for target.
+srsenb_mac/fast:
+	$(MAKE) -f srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/build.make srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/build
+.PHONY : srsenb_mac/fast
+
+#=============================================================================
 # Target rules for targets named srsenb_rrc
 
 # Build rule for target.
@@ -2461,6 +2474,7 @@ help:
 	@echo "... srsenb_radio"
 	@echo "... srsenb_phy"
 	@echo "... srsenb_stack"
+	@echo "... srsenb_mac"
 	@echo "... srsenb_rrc"
 	@echo "... srsenb_upper"
 	@echo "... scheduler_test_rand"

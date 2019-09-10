@@ -90,6 +90,7 @@ scheduler_test_rand_EXTERNAL_OBJECTS =
 
 srsenb/test/mac/scheduler_test_rand: srsenb/test/mac/CMakeFiles/scheduler_test_rand.dir/scheduler_test_rand.cc.o
 srsenb/test/mac/scheduler_test_rand: srsenb/test/mac/CMakeFiles/scheduler_test_rand.dir/build.make
+srsenb/test/mac/scheduler_test_rand: srsenb/src/stack/mac/libsrsenb_mac.a
 srsenb/test/mac/scheduler_test_rand: srsenb/src/phy/libsrsenb_phy.a
 srsenb/test/mac/scheduler_test_rand: lib/src/common/libsrslte_common.a
 srsenb/test/mac/scheduler_test_rand: lib/src/phy/libsrslte_phy.a

@@ -57,9 +57,33 @@ include srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/progress.make
 # Include the compile flags for this target's objects.
 include srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/flags.make
 
+srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/flags.make
+srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o: ../srsenb/src/stack/mac/scheduler_api.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o"
+	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o -c /tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_api.cc
+
+srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/srsenb_mac.dir/scheduler_api.cc.i"
+	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_api.cc > CMakeFiles/srsenb_mac.dir/scheduler_api.cc.i
+
+srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/srsenb_mac.dir/scheduler_api.cc.s"
+	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_api.cc -o CMakeFiles/srsenb_mac.dir/scheduler_api.cc.s
+
+srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o.requires:
+
+.PHONY : srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o.requires
+
+srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o.provides: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o.requires
+	$(MAKE) -f srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/build.make srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o.provides.build
+.PHONY : srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o.provides
+
+srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o.provides.build: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o
+
+
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/mac.cc.o: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/flags.make
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/mac.cc.o: ../srsenb/src/stack/mac/mac.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/mac.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/mac.cc.o"
 	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/srsenb_mac.dir/mac.cc.o -c /tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/mac.cc
 
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/mac.cc.i: cmake_force
@@ -83,7 +107,7 @@ srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/mac.cc.o.provides.build: srsenb/s
 
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler.cc.o: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/flags.make
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler.cc.o: ../srsenb/src/stack/mac/scheduler.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler.cc.o"
 	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/srsenb_mac.dir/scheduler.cc.o -c /tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler.cc
 
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler.cc.i: cmake_force
@@ -107,7 +131,7 @@ srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler.cc.o.provides.build: sr
 
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_grid.cc.o: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/flags.make
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_grid.cc.o: ../srsenb/src/stack/mac/scheduler_grid.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_grid.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_grid.cc.o"
 	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/srsenb_mac.dir/scheduler_grid.cc.o -c /tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_grid.cc
 
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_grid.cc.i: cmake_force
@@ -131,7 +155,7 @@ srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_grid.cc.o.provides.buil
 
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_harq.cc.o: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/flags.make
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_harq.cc.o: ../srsenb/src/stack/mac/scheduler_harq.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_harq.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_harq.cc.o"
 	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/srsenb_mac.dir/scheduler_harq.cc.o -c /tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_harq.cc
 
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_harq.cc.i: cmake_force
@@ -155,7 +179,7 @@ srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_harq.cc.o.provides.buil
 
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_metric.cc.o: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/flags.make
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_metric.cc.o: ../srsenb/src/stack/mac/scheduler_metric.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_metric.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_metric.cc.o"
 	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/srsenb_mac.dir/scheduler_metric.cc.o -c /tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_metric.cc
 
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_metric.cc.i: cmake_force
@@ -179,7 +203,7 @@ srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_metric.cc.o.provides.bu
 
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_metric_slicing.cc.o: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/flags.make
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_metric_slicing.cc.o: ../srsenb/src/stack/mac/scheduler_metric_slicing.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_metric_slicing.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_metric_slicing.cc.o"
 	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/srsenb_mac.dir/scheduler_metric_slicing.cc.o -c /tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_metric_slicing.cc
 
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_metric_slicing.cc.i: cmake_force
@@ -203,7 +227,7 @@ srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_metric_slicing.cc.o.pro
 
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_ue.cc.o: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/flags.make
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_ue.cc.o: ../srsenb/src/stack/mac/scheduler_ue.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_ue.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_ue.cc.o"
 	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/srsenb_mac.dir/scheduler_ue.cc.o -c /tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_ue.cc
 
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_ue.cc.i: cmake_force
@@ -227,7 +251,7 @@ srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_ue.cc.o.provides.build:
 
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/ue.cc.o: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/flags.make
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/ue.cc.o: ../srsenb/src/stack/mac/ue.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/ue.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/ue.cc.o"
 	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/srsenb_mac.dir/ue.cc.o -c /tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/ue.cc
 
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/ue.cc.i: cmake_force
@@ -251,6 +275,7 @@ srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/ue.cc.o.provides.build: srsenb/sr
 
 # Object files for target srsenb_mac
 srsenb_mac_OBJECTS = \
+"CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o" \
 "CMakeFiles/srsenb_mac.dir/mac.cc.o" \
 "CMakeFiles/srsenb_mac.dir/scheduler.cc.o" \
 "CMakeFiles/srsenb_mac.dir/scheduler_grid.cc.o" \
@@ -263,6 +288,7 @@ srsenb_mac_OBJECTS = \
 # External object files for target srsenb_mac
 srsenb_mac_EXTERNAL_OBJECTS =
 
+srsenb/src/stack/mac/libsrsenb_mac.a: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o
 srsenb/src/stack/mac/libsrsenb_mac.a: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/mac.cc.o
 srsenb/src/stack/mac/libsrsenb_mac.a: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler.cc.o
 srsenb/src/stack/mac/libsrsenb_mac.a: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_grid.cc.o
@@ -273,7 +299,7 @@ srsenb/src/stack/mac/libsrsenb_mac.a: srsenb/src/stack/mac/CMakeFiles/srsenb_mac
 srsenb/src/stack/mac/libsrsenb_mac.a: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/ue.cc.o
 srsenb/src/stack/mac/libsrsenb_mac.a: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/build.make
 srsenb/src/stack/mac/libsrsenb_mac.a: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX static library libsrsenb_mac.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX static library libsrsenb_mac.a"
 	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac && $(CMAKE_COMMAND) -P CMakeFiles/srsenb_mac.dir/cmake_clean_target.cmake
 	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/srsenb_mac.dir/link.txt --verbose=$(VERBOSE)
 
@@ -282,6 +308,7 @@ srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/build: srsenb/src/stack/mac/libsr
 
 .PHONY : srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/build
 
+srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/requires: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o.requires
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/requires: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/mac.cc.o.requires
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/requires: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler.cc.o.requires
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/requires: srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_grid.cc.o.requires

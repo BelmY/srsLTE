@@ -6451,6 +6451,60 @@
 					<DistClean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="srsenb_mac">
+				<Option output="/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac/libsrsenb_mac.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DHAVE_MBEDTLS"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/lib/include"/>
+					<Add directory="/tmp/tmp.Sx9ws9eKT0/lib/include"/>
+					<Add directory="/tmp/tmp.Sx9ws9eKT0"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac/Makefile&quot;  VERBOSE=1 srsenb_mac"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="srsenb_mac/fast">
+				<Option output="/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac/libsrsenb_mac.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DHAVE_MBEDTLS"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/lib/include"/>
+					<Add directory="/tmp/tmp.Sx9ws9eKT0/lib/include"/>
+					<Add directory="/tmp/tmp.Sx9ws9eKT0"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac/Makefile&quot;  VERBOSE=1 srsenb_mac/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/mac/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="srsenb_rrc">
 				<Option output="/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/rrc/libsrsenb_rrc.a" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/stack/rrc"/>
@@ -8713,8 +8767,33 @@
 		<Unit filename="/tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/enb_stack_lte.cc">
 			<Option target="srsenb_stack"/>
 		</Unit>
+		<Unit filename="/tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/mac.cc">
+			<Option target="srsenb_mac"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler.cc">
+			<Option target="srsenb_mac"/>
+		</Unit>
 		<Unit filename="/tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_api.cc">
 			<Option target="srsenb"/>
+			<Option target="srsenb_mac"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_grid.cc">
+			<Option target="srsenb_mac"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_harq.cc">
+			<Option target="srsenb_mac"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_metric.cc">
+			<Option target="srsenb_mac"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_metric_slicing.cc">
+			<Option target="srsenb_mac"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_ue.cc">
+			<Option target="srsenb_mac"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/ue.cc">
+			<Option target="srsenb_mac"/>
 		</Unit>
 		<Unit filename="/tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/rrc/rrc.cc">
 			<Option target="srsenb_rrc"/>

@@ -6,6 +6,7 @@
 #define SRSLTE_SCHEDULER_API_H
 
 #include "scheduler.h"
+#include <thread>
 
 namespace srsenb{
 
@@ -16,14 +17,14 @@ namespace srsenb{
 
         public:
             scheduler_api();
-            bool init(sched* scheduler);
-            bool set_dl_slice_mask(sched* scheduler, int slice_id, rbgmask_t mask);
-            bool set_ul_slice_mask(sched* scheduler, int slice_id, prbmask_t mask);
-            bool assign_slice_to_user(sched* scheduler, int slice_id, uint16_t rnti);
+            bool init();
+            bool set_dl_slice_mask(int slice_id, rbgmask_t mask);
+            bool set_ul_slice_mask(int slice_id, prbmask_t mask);
+            bool assign_slice_to_user(int slice_id, uint16_t rnti);
 
         private:
-            void work_imp(sched* scheduler);
-            void run_api_thread(sched* scheduler);
+            void work_imp();
+            void run_api_thread();
             void stop_api_thread();
     };
 

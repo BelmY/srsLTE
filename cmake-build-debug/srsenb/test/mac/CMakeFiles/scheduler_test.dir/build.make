@@ -90,6 +90,7 @@ scheduler_test_EXTERNAL_OBJECTS =
 
 srsenb/test/mac/scheduler_test: srsenb/test/mac/CMakeFiles/scheduler_test.dir/scheduler_test.cc.o
 srsenb/test/mac/scheduler_test: srsenb/test/mac/CMakeFiles/scheduler_test.dir/build.make
+srsenb/test/mac/scheduler_test: srsenb/src/stack/mac/libsrsenb_mac.a
 srsenb/test/mac/scheduler_test: srsenb/src/phy/libsrsenb_phy.a
 srsenb/test/mac/scheduler_test: lib/src/common/libsrslte_common.a
 srsenb/test/mac/scheduler_test: lib/src/phy/libsrslte_phy.a

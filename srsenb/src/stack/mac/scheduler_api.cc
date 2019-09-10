@@ -9,14 +9,14 @@
 #include <stdlib.h>
 #include <netinet/in.h>
 #include <string.h>
-#include <thread>
 
 srsenb::scheduler_api::scheduler_api(){
     this->running = false;
 }
 
-bool srsenb::scheduler_api::init(sched* scheduler)
+bool srsenb::scheduler_api::init()
 {
+    /*
     if (scheduler == NULL){
         return false;
     }
@@ -24,22 +24,26 @@ bool srsenb::scheduler_api::init(sched* scheduler)
         this->run_api_thread(scheduler);
         return true;
     }
+     */
+    return true
 }
 
-bool srsenb::scheduler_api::set_dl_slice_mask(sched* scheduler, int slice_id, rbgmask_t mask){
-    return scheduler->get_dl_metric()->set_slice(slice_id, mask);
+bool srsenb::scheduler_api::set_dl_slice_mask(int slice_id, rbgmask_t mask){
+    //return scheduler->get_dl_metric()->set_slice(slice_id, mask);
+    return true;
 }
 
 //TODO: not yet implemented
-bool srsenb::scheduler_api::set_ul_slice_mask(sched* scheduler, int slice_id, prbmask_t mask){
+bool srsenb::scheduler_api::set_ul_slice_mask(int slice_id, prbmask_t mask){
     return false;
 }
 
-bool srsenb::scheduler_api::assign_slice_to_user(sched* scheduler, int slice_id, uint16_t rnti) {
-    return scheduler->get_dl_metric()->assign_slice_to_user(slice_id, rnti);
+bool srsenb::scheduler_api::assign_slice_to_user(int slice_id, uint16_t rnti) {
+    //return scheduler->get_dl_metric()->assign_slice_to_user(slice_id, rnti);
+    return true;
 }
 
-void srsenb::scheduler_api::work_imp(sched* scheduler){
+void srsenb::scheduler_api::work_imp(){
 
     int server_fd, new_socket; long valread;
     struct sockaddr_in address;
@@ -87,9 +91,9 @@ void srsenb::scheduler_api::work_imp(sched* scheduler){
 
 }
 
-void srsenb::scheduler_api::run_api_thread(sched* scheduler){
+void srsenb::scheduler_api::run_api_thread(){
     this->running = true;
-    this->api_thread(srsenb::scheduler_api::work_imp(scheduler));
+    //this->api_thread(srsenb::scheduler_api::work_imp(scheduler));
 }
 void srsenb::scheduler_api::stop_api_thread(){
     this->running = false;

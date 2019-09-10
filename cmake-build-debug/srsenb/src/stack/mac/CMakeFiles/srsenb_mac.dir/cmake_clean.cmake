@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o"
   "CMakeFiles/srsenb_mac.dir/mac.cc.o"
   "CMakeFiles/srsenb_mac.dir/scheduler.cc.o"
   "CMakeFiles/srsenb_mac.dir/scheduler_grid.cc.o"

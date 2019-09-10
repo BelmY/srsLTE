@@ -24,7 +24,7 @@
 #ifndef SRSENB_SCHEDULER_METRIC_H
 #define SRSENB_SCHEDULER_METRIC_H
 
-#include "scheduler.h"
+#include "srsenb/hdr/stack/mac/scheduler.h"
 #include <map>
 
 namespace srsenb {

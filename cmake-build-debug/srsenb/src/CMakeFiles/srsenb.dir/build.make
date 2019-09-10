@@ -250,6 +250,7 @@ srsenb/src/srsenb: srsenb/src/radio/libsrsenb_radio.a
 srsenb/src/srsenb: srsenb/src/phy/libsrsenb_phy.a
 srsenb/src/srsenb: srsenb/src/stack/libsrsenb_stack.a
 srsenb/src/srsenb: srsenb/src/stack/upper/libsrsenb_upper.a
+srsenb/src/srsenb: srsenb/src/stack/mac/libsrsenb_mac.a
 srsenb/src/srsenb: srsenb/src/stack/rrc/libsrsenb_rrc.a
 srsenb/src/srsenb: lib/src/common/libsrslte_common.a
 srsenb/src/srsenb: lib/src/phy/libsrslte_phy.a
