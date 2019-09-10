@@ -25,7 +25,7 @@ bool srsenb::scheduler_api::init()
         return true;
     }
      */
-    return true
+    return true;
 }
 
 bool srsenb::scheduler_api::set_dl_slice_mask(int slice_id, rbgmask_t mask){

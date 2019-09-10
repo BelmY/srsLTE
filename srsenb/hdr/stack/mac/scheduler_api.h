@@ -5,8 +5,8 @@
 #ifndef SRSLTE_SCHEDULER_API_H
 #define SRSLTE_SCHEDULER_API_H
 
-#include "scheduler.h"
 #include <thread>
+#include "scheduler_harq.h"
 
 namespace srsenb{
 

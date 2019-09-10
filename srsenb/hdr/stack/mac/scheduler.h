@@ -166,7 +166,7 @@ protected:
   srslte::log *log_h; 
   rrc_interface_mac *rrc;
   //TODO: nuevo
-  scheduler_api* api;
+  srsenb::scheduler_api* api;
 
   pthread_rwlock_t rwlock;
   std::mutex       sched_mutex;

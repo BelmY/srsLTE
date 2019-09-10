@@ -295,17 +295,12 @@ ul_harq_proc* ul_metric_slicing::allocate_user_newtx_prbs(sched_ue* user)
  * Slices management
  *********************/
 
-    bool set_slice(int slice_id, rbgmask_t mask){
-        if (mask != NULL){
-            this.slices[slice_id] = mask;
-            return true;
-        }
-        else{
-            return false;
-        }
+    bool dl_metric_slicing::set_slice(int slice_id, rbgmask_t mask){
+	return false;
     }
 
-    bool assign_slice_to_user(int slice_id, uint16 rnti){
-        this.assigned_slice[rnti] = slice_id;
+    bool dl_metric_slicing::assign_slice_to_user(int slice_id, uint16 rnti){
+        //this.assigned_slice[rnti] = slice_id;
+	return true;
     }
 }
