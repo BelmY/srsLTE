@@ -11,22 +11,20 @@ namespace srsenb{
 
     class scheduler_api {
 
-        sched* scheduler;
         std::thread api_thread;
         bool running;
 
         public:
-            scheduler_api(const char* ip_addr, int port);
+            scheduler_api();
             bool init(sched* scheduler);
-            void run_api_thread();
-            void stop_api_thread();
-            bool set_dl_slice_mask(int slice_id, rbgmask_t mask);
-            bool set_ul_slice_mask(int slice_id, prbmask_t mask);
-            bool assign_slice_to_user(int slice_id, uint16_t rnti);
+            bool set_dl_slice_mask(sched* scheduler, int slice_id, rbgmask_t mask);
+            bool set_ul_slice_mask(sched* scheduler, int slice_id, prbmask_t mask);
+            bool assign_slice_to_user(sched* scheduler, int slice_id, uint16_t rnti);
 
         private:
-            void work_imp();
-            void run_thread();
+            void work_imp(sched* scheduler);
+            void run_api_thread(sched* scheduler);
+            void stop_api_thread();
     };
 
 }
