@@ -38,7 +38,7 @@ void srsenb::scheduler_api::work_imp(){
     int server_fd, new_socket; long valread;
     struct sockaddr_in address;
     int addrlen = sizeof(address);
-    int PORT = 8080;
+    int PORT = 8787;
 
     char *hello = "Hello from server";
 
@@ -69,9 +69,10 @@ void srsenb::scheduler_api::work_imp(){
             perror("In accept");
             exit(EXIT_FAILURE);
         }
-
+        printf("\n+++++++ leemos ++++++++\n\n");
         char buffer[30000] = {0};
         valread = read( new_socket , buffer, 30000);
+	printf("\n+++++++ tenemos algo ++++++++\n\n");
         printf("%s\n",buffer );
         write(new_socket , hello , strlen(hello));
         printf("------------------Hello message sent-------------------\n");
@@ -83,7 +84,8 @@ void srsenb::scheduler_api::work_imp(){
 
 void srsenb::scheduler_api::run_api_thread(){
     this->running = true;
-    std::thread api_thread(&srsenb::scheduler_api::work_imp);
+    std::thread api_thread(&srsenb::scheduler_api::work_imp, this);
+    api_thread.detach();
 }
 void srsenb::scheduler_api::stop_api_thread(){
     this->running = false;
