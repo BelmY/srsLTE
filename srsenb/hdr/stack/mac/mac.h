@@ -36,6 +36,7 @@
 #include "srslte/interfaces/enb_metrics_interface.h"
 #include "ue.h"
 #include "scheduler_metric_slicing.h"
+#include "scheduler_api.h"
 
 namespace srsenb {
   
@@ -143,13 +144,14 @@ private:
   /* Scheduler unit */
   sched            scheduler;
   //TODO: modified
+  scheduler_api     sched_api;
   //dl_metric_rr     sched_metric_dl_rr;
   //ul_metric_rr     sched_metric_ul_rr;
   dl_metric_slicing     sched_metric_dl_slicing;
   ul_metric_slicing     sched_metric_ul_slicing;
   sched_interface::cell_cfg_t cell_config;
   
-  
+
   sched_interface::dl_pdu_mch_t mch;
   
   

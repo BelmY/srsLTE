@@ -584,12 +584,6 @@ sched::sched() : bc_aggr_level(0), rar_aggr_level(0), P(0), si_n_rbg(0), rar_n_r
   pthread_rwlock_init(&rwlock, NULL);
 
   reset();
-
-
-  //TODO: nuevo
-  api = new scheduler_api();
-  api->init();
-
 }
 
 sched::~sched()

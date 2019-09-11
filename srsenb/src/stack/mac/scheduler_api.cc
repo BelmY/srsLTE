@@ -14,7 +14,7 @@ srsenb::scheduler_api::scheduler_api(){
     this->running = false;
 }
 
-bool srsenb::scheduler_api::init()
+bool srsenb::scheduler_api::init(sched* scheduler)
 {
     /*
     if (scheduler == NULL){
@@ -25,6 +25,7 @@ bool srsenb::scheduler_api::init()
         return true;
     }
      */
+    this->scheduler = scheduler;
     return true;
 }
 

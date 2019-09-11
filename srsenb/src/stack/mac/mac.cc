@@ -93,7 +93,10 @@ bool mac::init(const mac_args_t&        args_,
 
     // Set default scheduler configuration 
     scheduler.set_sched_cfg(&args.sched);
-    
+
+    scheduler_api = new scheduler_api();
+    sched_api.init(&scheduler);
+
     // Init softbuffer for SI messages
     for (int i=0;i<NOF_BCCH_DLSCH_MSG;i++) {
       srslte_softbuffer_tx_init(&bcch_softbuffer_tx[i], cell.nof_prb);

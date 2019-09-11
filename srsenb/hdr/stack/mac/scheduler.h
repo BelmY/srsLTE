@@ -28,7 +28,6 @@
 #include "srslte/common/log.h"
 #include "srslte/interfaces/enb_interfaces.h"
 #include "srslte/interfaces/sched_interface.h"
-#include "scheduler_api.h"
 #include <map>
 #include <mutex>
 #include <pthread.h>
@@ -165,8 +164,6 @@ protected:
   metric_ul *ul_metric; 
   srslte::log *log_h; 
   rrc_interface_mac *rrc;
-  //TODO: nuevo
-  srsenb::scheduler_api* api;
 
   pthread_rwlock_t rwlock;
   std::mutex       sched_mutex;
