@@ -14,24 +14,14 @@ srsenb::scheduler_api::scheduler_api(){
     this->running = false;
 }
 
-bool srsenb::scheduler_api::init(sched* scheduler)
+void srsenb::scheduler_api::init(sched* scheduler)
 {
-    /*
-    if (scheduler == NULL){
-        return false;
-    }
-    else{
-        this->run_api_thread(scheduler);
-        return true;
-    }
-     */
     this->scheduler = scheduler;
-    return true;
+    this->run_api_thread();
 }
 
 bool srsenb::scheduler_api::set_dl_slice_mask(int slice_id, rbgmask_t mask){
-    //return scheduler->get_dl_metric()->set_slice(slice_id, mask);
-    return true;
+    return this->scheduler->get_dl_metric()->set_slice(slice_id, mask);
 }
 
 //TODO: not yet implemented
@@ -40,8 +30,7 @@ bool srsenb::scheduler_api::set_ul_slice_mask(int slice_id, prbmask_t mask){
 }
 
 bool srsenb::scheduler_api::assign_slice_to_user(int slice_id, uint16_t rnti) {
-    //return scheduler->get_dl_metric()->assign_slice_to_user(slice_id, rnti);
-    return true;
+    return this->scheduler->get_dl_metric()->assign_slice_to_user(slice_id, rnti);
 }
 
 void srsenb::scheduler_api::work_imp(){
@@ -94,7 +83,7 @@ void srsenb::scheduler_api::work_imp(){
 
 void srsenb::scheduler_api::run_api_thread(){
     this->running = true;
-    //this->api_thread(srsenb::scheduler_api::work_imp(scheduler));
+    std::thread api_thread(&srsenb::scheduler_api::work_imp);
 }
 void srsenb::scheduler_api::stop_api_thread(){
     this->running = false;

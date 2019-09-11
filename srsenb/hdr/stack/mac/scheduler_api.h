@@ -13,13 +13,12 @@ namespace srsenb{
 
     class scheduler_api {
 
-        std::thread api_thread;
-        bool running;
-        sched*          scheduler = NULL;
+        bool        running;
+        sched*      scheduler = NULL;
 
         public:
             scheduler_api();
-            bool init(sched* scheduler);
+            void init(sched* scheduler);
             bool set_dl_slice_mask(int slice_id, rbgmask_t mask);
             bool set_ul_slice_mask(int slice_id, prbmask_t mask);
             bool assign_slice_to_user(int slice_id, uint16_t rnti);
