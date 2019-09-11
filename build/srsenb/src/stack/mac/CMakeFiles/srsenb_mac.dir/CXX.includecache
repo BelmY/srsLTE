@@ -41,6 +41,8 @@ ue.h
 ../srsenb/hdr/stack/mac/ue.h
 scheduler_metric_slicing.h
 ../srsenb/hdr/stack/mac/scheduler_metric_slicing.h
+scheduler_api.h
+../srsenb/hdr/stack/mac/scheduler_api.h
 
 ..//srsenb/hdr/stack/mac/mac_metrics.h
 
@@ -57,8 +59,6 @@ srslte/interfaces/enb_interfaces.h
 ../srsenb/hdr/stack/mac/srslte/interfaces/enb_interfaces.h
 srslte/interfaces/sched_interface.h
 ../srsenb/hdr/stack/mac/srslte/interfaces/sched_interface.h
-scheduler_api.h
-../srsenb/hdr/stack/mac/scheduler_api.h
 map
 -
 mutex
@@ -71,6 +71,8 @@ thread
 -
 scheduler_harq.h
 ../srsenb/hdr/stack/mac/scheduler_harq.h
+scheduler.h
+../srsenb/hdr/stack/mac/scheduler.h
 
 ..//srsenb/hdr/stack/mac/scheduler_grid.h
 lib/include/srslte/interfaces/sched_interface.h
@@ -163,8 +165,6 @@ srslte/interfaces/enb_interfaces.h
 ../srsenb/hdr/stack/mac/srslte/interfaces/enb_interfaces.h
 srslte/interfaces/sched_interface.h
 ../srsenb/hdr/stack/mac/srslte/interfaces/sched_interface.h
-scheduler_api.h
-../srsenb/hdr/stack/mac/scheduler_api.h
 map
 -
 mutex
@@ -177,6 +177,8 @@ thread
 -
 scheduler_harq.h
 ../srsenb/hdr/stack/mac/scheduler_harq.h
+scheduler.h
+../srsenb/hdr/stack/mac/scheduler.h
 
 ../srsenb/hdr/stack/mac/scheduler_grid.h
 lib/include/srslte/interfaces/sched_interface.h
