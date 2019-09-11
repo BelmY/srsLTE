@@ -22,6 +22,8 @@ add_subdirectory(radio)
 add_subdirectory(phy)
 add_subdirectory(stack)
 
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(SERVED_PKG REQUIRED IMPORTED_TARGET served)
 
 # Link libstdc++ and libgcc
 if(BUILD_STATIC)
@@ -50,7 +52,8 @@ target_link_libraries(srsenb  srsenb_radio
                               ${Boost_LIBRARIES} 
                               ${SEC_LIBRARIES}
                               ${LIBCONFIGPP_LIBRARIES}
-                              ${SCTP_LIBRARIES})
+                              ${SCTP_LIBRARIES}
+                              PkgConfig::SERVED_PKG)
 
 if (RPATH)
   set_target_properties(srsenb PROPERTIES INSTALL_RPATH ".")

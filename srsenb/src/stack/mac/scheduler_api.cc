@@ -9,8 +9,15 @@
 #include <stdlib.h>
 #include <netinet/in.h>
 #include <string.h>
+#include <served/served.hpp>
+#include <iostream>
 
 srsenb::scheduler_api::scheduler_api(){
+    this->running = false;
+}
+
+srsenb::scheduler_api::~scheduler_api() {
+    this->stop_api_thread();
     this->running = false;
 }
 
@@ -33,8 +40,24 @@ bool srsenb::scheduler_api::assign_slice_to_user(int slice_id, uint16_t rnti) {
     return this->scheduler->get_dl_metric()->assign_slice_to_user(slice_id, rnti);
 }
 
-void srsenb::scheduler_api::work_imp(){
+int srsenb::scheduler_api::work_imp(){
 
+    served::multiplexer mux;
+    mux.handle("/api/v1/greeting")
+            .get([&](served::response &res, const served::request &req) {
+                std::string name = req.query["name"];
+                res.set_header("content-type", "application/json");
+                res << "{ \"content\": \"Hello, " << ((name.length() > 0) ? name : "world") << "!\" }\n";
+            });
+
+    std::cout << "Try this example with:" << std::endl;
+    std::cout << "  curl \"http://localhost:8123/api/v1/greeting?name=world\"" << std::endl;
+
+    served::net::server server("127.0.0.1", "8123", mux);
+    server.run(10);
+
+    return (EXIT_SUCCESS);
+    /*
     int server_fd, new_socket; long valread;
     struct sockaddr_in address;
     int addrlen = sizeof(address);
@@ -72,13 +95,14 @@ void srsenb::scheduler_api::work_imp(){
         printf("\n+++++++ leemos ++++++++\n\n");
         char buffer[30000] = {0};
         valread = read( new_socket , buffer, 30000);
-	printf("\n+++++++ tenemos algo ++++++++\n\n");
+
         printf("%s\n",buffer );
         write(new_socket , hello , strlen(hello));
         printf("------------------Hello message sent-------------------\n");
         close(new_socket);
     }
     return;
+    */
 
 }
 

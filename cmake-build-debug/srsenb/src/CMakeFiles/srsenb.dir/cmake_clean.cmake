@@ -5,7 +5,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/srsenb.dir/enb_cfg_parser.cc.o"
   "CMakeFiles/srsenb.dir/metrics_stdout.cc.o"
   "CMakeFiles/srsenb.dir/metrics_csv.cc.o"
-  "CMakeFiles/srsenb.dir/stack/mac/scheduler_api.cc.o"
   "srsenb.pdb"
   "srsenb"
 )

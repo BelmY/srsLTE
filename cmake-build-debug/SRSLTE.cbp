@@ -6247,6 +6247,7 @@
 					<Add directory="/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/lib/include"/>
 					<Add directory="/tmp/tmp.Sx9ws9eKT0/lib/include"/>
 					<Add directory="/tmp/tmp.Sx9ws9eKT0"/>
+					<Add directory="/usr/local/lib/pkgconfig/../../include"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -6274,6 +6275,7 @@
 					<Add directory="/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/lib/include"/>
 					<Add directory="/tmp/tmp.Sx9ws9eKT0/lib/include"/>
 					<Add directory="/tmp/tmp.Sx9ws9eKT0"/>
+					<Add directory="/usr/local/lib/pkgconfig/../../include"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -7100,6 +7102,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/tmp/tmp.Sx9ws9eKT0/build/lib/include/srslte/build_info.h">
+			<Option target="add_srslte_headers"/>
+		</Unit>
 		<Unit filename="/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/lib/include/srslte/version.h">
 			<Option target="add_srslte_headers"/>
 		</Unit>
@@ -8774,7 +8779,6 @@
 			<Option target="srsenb_mac"/>
 		</Unit>
 		<Unit filename="/tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_api.cc">
-			<Option target="srsenb"/>
 			<Option target="srsenb_mac"/>
 		</Unit>
 		<Unit filename="/tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_grid.cc">

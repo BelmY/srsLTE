@@ -10,7 +10,6 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/tmp/tmp.Sx9ws9eKT0/srsenb/src/metrics_csv.cc" "/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/CMakeFiles/srsenb.dir/metrics_csv.cc.o"
   "/tmp/tmp.Sx9ws9eKT0/srsenb/src/metrics_stdout.cc" "/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/CMakeFiles/srsenb.dir/metrics_stdout.cc.o"
   "/tmp/tmp.Sx9ws9eKT0/srsenb/src/parser.cc" "/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/CMakeFiles/srsenb.dir/parser.cc.o"
-  "/tmp/tmp.Sx9ws9eKT0/srsenb/src/stack/mac/scheduler_api.cc" "/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src/CMakeFiles/srsenb.dir/stack/mac/scheduler_api.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -25,6 +24,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "lib/include"
   "../lib/include"
   "../"
+  "/usr/local/lib/pkgconfig/../../include"
   )
 
 # Targets to which this target links.

@@ -366,33 +366,6 @@ parser.cc.s:
 	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug && $(MAKE) -f srsenb/src/CMakeFiles/srsenb.dir/build.make srsenb/src/CMakeFiles/srsenb.dir/parser.cc.s
 .PHONY : parser.cc.s
 
-stack/mac/scheduler_api.o: stack/mac/scheduler_api.cc.o
-
-.PHONY : stack/mac/scheduler_api.o
-
-# target to build an object file
-stack/mac/scheduler_api.cc.o:
-	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug && $(MAKE) -f srsenb/src/CMakeFiles/srsenb.dir/build.make srsenb/src/CMakeFiles/srsenb.dir/stack/mac/scheduler_api.cc.o
-.PHONY : stack/mac/scheduler_api.cc.o
-
-stack/mac/scheduler_api.i: stack/mac/scheduler_api.cc.i
-
-.PHONY : stack/mac/scheduler_api.i
-
-# target to preprocess a source file
-stack/mac/scheduler_api.cc.i:
-	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug && $(MAKE) -f srsenb/src/CMakeFiles/srsenb.dir/build.make srsenb/src/CMakeFiles/srsenb.dir/stack/mac/scheduler_api.cc.i
-.PHONY : stack/mac/scheduler_api.cc.i
-
-stack/mac/scheduler_api.s: stack/mac/scheduler_api.cc.s
-
-.PHONY : stack/mac/scheduler_api.s
-
-# target to generate assembly for a file
-stack/mac/scheduler_api.cc.s:
-	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug && $(MAKE) -f srsenb/src/CMakeFiles/srsenb.dir/build.make srsenb/src/CMakeFiles/srsenb.dir/stack/mac/scheduler_api.cc.s
-.PHONY : stack/mac/scheduler_api.cc.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -427,9 +400,6 @@ help:
 	@echo "... parser.o"
 	@echo "... parser.i"
 	@echo "... parser.s"
-	@echo "... stack/mac/scheduler_api.o"
-	@echo "... stack/mac/scheduler_api.i"
-	@echo "... stack/mac/scheduler_api.s"
 .PHONY : help
 
 

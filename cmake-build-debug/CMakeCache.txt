@@ -523,6 +523,12 @@ ZEROMQ_INCLUDE_DIRS:PATH=/usr/local/include
 //Path to a library.
 ZEROMQ_LIBRARIES:FILEPATH=/usr/local/lib/libzmq.so
 
+//The directory containing a CMake configuration file for cpprestsdk.
+cpprestsdk_DIR:PATH=/usr/local/lib/cpprestsdk
+
+//Path to a library.
+pkgcfg_lib_SERVED_PKG_served:FILEPATH=/usr/local/lib/libserved.so
+
 //Dependencies for target
 rrc_asn1_LIB_DEPENDS:STATIC=
 
@@ -1124,6 +1130,40 @@ SCPCOMMAND-ADVANCED:INTERNAL=1
 SCTP_INCLUDE_DIRS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: SCTP_LIBRARIES
 SCTP_LIBRARIES-ADVANCED:INTERNAL=1
+SERVED_PKG_CFLAGS:INTERNAL=-I/usr/local/lib/pkgconfig/../..//include
+SERVED_PKG_CFLAGS_I:INTERNAL=
+SERVED_PKG_CFLAGS_OTHER:INTERNAL=
+SERVED_PKG_FOUND:INTERNAL=1
+SERVED_PKG_INCLUDEDIR:INTERNAL=/usr/local/lib/pkgconfig/../..//include
+SERVED_PKG_INCLUDE_DIRS:INTERNAL=/usr/local/lib/pkgconfig/../..//include
+SERVED_PKG_LDFLAGS:INTERNAL=-L/usr/local/lib/pkgconfig/../;-lserved
+SERVED_PKG_LDFLAGS_OTHER:INTERNAL=
+SERVED_PKG_LIBDIR:INTERNAL=/usr/local/lib/pkgconfig/../
+SERVED_PKG_LIBRARIES:INTERNAL=served
+SERVED_PKG_LIBRARY_DIRS:INTERNAL=/usr/local/lib/pkgconfig/../
+SERVED_PKG_LIBS:INTERNAL=
+SERVED_PKG_LIBS_L:INTERNAL=
+SERVED_PKG_LIBS_OTHER:INTERNAL=
+SERVED_PKG_LIBS_PATHS:INTERNAL=
+SERVED_PKG_PREFIX:INTERNAL=/usr/local/lib/pkgconfig/../../
+SERVED_PKG_STATIC_CFLAGS:INTERNAL=-I/usr/local/lib/pkgconfig/../..//include
+SERVED_PKG_STATIC_CFLAGS_I:INTERNAL=
+SERVED_PKG_STATIC_CFLAGS_OTHER:INTERNAL=
+SERVED_PKG_STATIC_INCLUDE_DIRS:INTERNAL=/usr/local/lib/pkgconfig/../..//include
+SERVED_PKG_STATIC_LDFLAGS:INTERNAL=-L/usr/local/lib/pkgconfig/../;-lserved
+SERVED_PKG_STATIC_LDFLAGS_OTHER:INTERNAL=
+SERVED_PKG_STATIC_LIBDIR:INTERNAL=
+SERVED_PKG_STATIC_LIBRARIES:INTERNAL=served
+SERVED_PKG_STATIC_LIBRARY_DIRS:INTERNAL=/usr/local/lib/pkgconfig/../
+SERVED_PKG_STATIC_LIBS:INTERNAL=
+SERVED_PKG_STATIC_LIBS_L:INTERNAL=
+SERVED_PKG_STATIC_LIBS_OTHER:INTERNAL=
+SERVED_PKG_STATIC_LIBS_PATHS:INTERNAL=
+SERVED_PKG_VERSION:INTERNAL=1.4.3-DS1
+SERVED_PKG_served_INCLUDEDIR:INTERNAL=
+SERVED_PKG_served_LIBDIR:INTERNAL=
+SERVED_PKG_served_PREFIX:INTERNAL=
+SERVED_PKG_served_VERSION:INTERNAL=
 //ADVANCED property for variable: SITE
 SITE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: SLURM_SBATCH_COMMAND
@@ -1217,6 +1257,7 @@ _Boost_USE_MULTITHREADED_LAST:INTERNAL=TRUE
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
 __pkg_config_arguments_PC_FFTW3F:INTERNAL=fftw3f >= 3.0
+__pkg_config_arguments_SERVED_PKG:INTERNAL=REQUIRED;IMPORTED_TARGET;served
 __pkg_config_checked_BLADERF_PKG:INTERNAL=1
 __pkg_config_checked_PC_FFTW3F:INTERNAL=1
 __pkg_config_checked_PC_MBEDTLS:INTERNAL=1
@@ -1224,7 +1265,8 @@ __pkg_config_checked_PC_PCSCLITE:INTERNAL=1
 __pkg_config_checked_PC_POLARSSL:INTERNAL=1
 __pkg_config_checked_PC_SCTP:INTERNAL=1
 __pkg_config_checked_PC_SRSGUI:INTERNAL=1
+__pkg_config_checked_SERVED_PKG:INTERNAL=1
 __pkg_config_checked_SOAPYSDR_PKG:INTERNAL=1
 __pkg_config_checked_ZEROMQ_PKG:INTERNAL=1
-prefix_result:INTERNAL=/usr/lib/x86_64-linux-gnu
+prefix_result:INTERNAL=/usr/local/lib/pkgconfig/../
 
