@@ -21,6 +21,8 @@
 
 srsenb::scheduler_api::scheduler_api(){
     this->running = false;
+    this->http_op_id["GET"]     = 1;
+    this->http_op_id["POST"]    = 2;
 }
 
 srsenb::scheduler_api::~scheduler_api() {
@@ -32,6 +34,11 @@ void srsenb::scheduler_api::init(sched* scheduler)
 {
     this->scheduler = scheduler;
     this->run_api_thread();
+}
+
+void srsenb::scheduler_api::stop()
+{
+    this->stop_api_thread();
 }
 
 bool srsenb::scheduler_api::set_dl_slice_mask(int slice_id, rbgmask_t mask){
@@ -105,14 +112,34 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
     }
     else request[0]=0;
 
-    printf("s>Received: %s \n",request);
+    printf("scheduler_api > Received: %s \n",request);
     printf("\n");
+
     request_line = strtok(request, "\n");
     operation = strtok(request_line, " ");
     file_path = strtok(NULL, " ");
 
+    ext = (char*)calloc(1, strlen(file_path));
+    ext = (strrchr(file_path, '.'))+1;
+
+    switch (http_op_id[operation]){
+        // HTTP GET
+        case 1:
+            printf("scheduler_api> HTTP GET %s\n", ext);
+            printf("\n");
+            return;
+        // HTTP POST
+        case 2:
+            printf("scheduler_api> HTTP POST %s\n", ext);
+            printf("\n");
+            return;
+        default:
+            printf("scheduler_api> Operation %s not supported by the server. Just GET/POST requests are supported\n", operation);
+            return;
+    }
+    /*
     if (strcmp(operation, "GET") != 0){
-        printf("s> Operation %s not supported by the server. Just GET request is supported\n", operation);
+        printf("scheduler_api> Operation %s not supported by the server. Just GET request is supported\n", operation);
     }
     else{
         if (strcmp(file_path, "/") == 0){
@@ -127,9 +154,7 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
         }
 
     }
-    printf("s> Requested: file: %s, extension: %s\n", file_path, ext);
-    printf("\n");
-    /*
+
     if ((strcmp(ext, "image/png") != 0) && (strcmp(ext, "image/jpg") != 0) && (strcmp(ext, "text/html") != 0)){
         printf("s> Format %s not supported.\n", ext);
         int not_imp_file_fd = open("501.html", O_RDONLY);
@@ -167,7 +192,7 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
     sleep(5);
     /* Cerramos el socket */
     close(local_socket_fd);
-    printf("s> COnection Finished\n");
+    printf("scheduler_api> Conection Finished\n");
     /* Matamos al hilo */
     pthread_exit(0);
 
@@ -224,7 +249,7 @@ int srsenb::scheduler_api::work_imp(){
         local.sin_addr = *(struct in_addr*) gethostbyname(server_name)->h_addr; // Take the first host address
         char *ip = inet_ntoa(local.sin_addr);									// Translate the ip to the correct format
 
-        printf("s> init server <%s>:<%d>\n", ip, ntohs(server_addr.sin_port));
+        printf("scheduler_api > init <%s>:<%d>\n", ip, ntohs(server_addr.sin_port));
 
         /* Start listening and set maximun queue of pending connections to 64*/
         if((listen(sd, 64)) == -1){
@@ -234,7 +259,7 @@ int srsenb::scheduler_api::work_imp(){
 
         while(this->running){
 
-            printf("s> waiting requests ...\n");
+            printf("scheduler_api> waiting for requests ...\n");
 
             /* Accepts connections */
             if((new_socket = accept(sd, (struct sockaddr *)&client_addr,&size_client)) == -1){
@@ -249,7 +274,7 @@ int srsenb::scheduler_api::work_imp(){
             local_client.sin_addr =*(struct in_addr*) gethostbyname(client_name)->h_addr;
             char *client_ip = inet_ntoa(local_client.sin_addr);
 
-            printf("s> accept <%s>:<%d>\n", client_ip, ntohs(client_addr.sin_port));
+            printf("scheduler_api> accept <%s>:<%d>\n", client_ip, ntohs(client_addr.sin_port));
 
             /* Create a thead that will be in charge of  manage the request. We pass the following parameters:
                 - attributes --> thread parameters
@@ -258,14 +283,6 @@ int srsenb::scheduler_api::work_imp(){
             */
             std::thread http_handler_thread(&srsenb::scheduler_api::process_http_request, this, &new_socket);
             http_handler_thread.detach();
-
-
-            /*
-            if (pthread_create(&fd, &attributes,scheduler_api::process_http_request, &new_socket) == -1){
-                printf("[ERROR] Can't create thread\n");
-                return -1;
-            }
-             */
 
             pthread_mutex_lock(&this->mutex);
             /* wait until thread has finished copying the arguments */
@@ -277,6 +294,7 @@ int srsenb::scheduler_api::work_imp(){
             pthread_mutex_unlock(&this->mutex);
         }
         close (sd);
+        printf("scheduler_api> Closing server\n");
         exit(0);
     }
 }

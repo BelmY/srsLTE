@@ -31,6 +31,7 @@ namespace srsenb{
         };
         // Client address
         struct sockaddr_in client_addr;
+        std::map<char*,int> http_op_id;
 
         // Concurrency control variables
         pthread_mutex_t mutex;
@@ -40,11 +41,9 @@ namespace srsenb{
         public:
             scheduler_api();
             ~scheduler_api();
-            /**
-            * Initialize a new scheduler_api instance (server).
-            * @param scheduler: scheduler instance managed by means of the api
-            */
+
             void init(sched* scheduler);
+            void stop();
 
             bool set_dl_slice_mask(int slice_id, rbgmask_t mask);
             bool set_ul_slice_mask(int slice_id, prbmask_t mask);

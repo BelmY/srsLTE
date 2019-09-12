@@ -130,6 +130,7 @@ void mac::stop()
     timers_thread.stop();
     pdu_process_thread.stop();
   }
+  sched_api.stop();
   pthread_rwlock_unlock(&rwlock);
 }
 
