@@ -122,19 +122,38 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
     ext = (char*)calloc(1, strlen(file_path));
     ext = (strrchr(file_path, '.'))+1;
 
+    if (strcmp(operation, "GET") == 0){
+        printf("scheduler_api> HTTP GET %s\n", ext);
+        printf("\n");
+    }
+    else if {
+        printf("scheduler_api> HTTP POST %s\n", ext);
+        printf("\n");
+    }
+    else{
+        printf("scheduler_api> Operation %s not supported by the server. Just GET/POST requests are supported\n", operation);
+        return;
+    }
+
     switch (http_op_id[operation]){
         // HTTP GET
         case 1:
             printf("scheduler_api> HTTP GET %s\n", ext);
             printf("\n");
+            sprintf(reply, "HTTP/1.0 501 Not Implemented\r\nContent-Length: %i\r\nContent-Type: %s\r\n\r\n",f_size, "text/html");
+            write(local_socket_fd, reply, strlen(reply));
             return;
         // HTTP POST
         case 2:
             printf("scheduler_api> HTTP POST %s\n", ext);
             printf("\n");
+            sprintf(reply, "HTTP/1.0 404 Not Found\r\nContent-Length: %i\r\nContent-Type: %s\r\n\r\n", f_size,ext);
+            write(local_socket_fd, reply, strlen(reply));
             return;
         default:
             printf("scheduler_api> Operation %s not supported by the server. Just GET/POST requests are supported\n", operation);
+            sprintf(reply, "HTTP/1.1 200 OK\r\nContent-length: %i\r\nContent-Type: %s\r\n\r\n",f_size, ext);
+            write(local_socket_fd, reply, strlen(reply));
             return;
     }
     /*
