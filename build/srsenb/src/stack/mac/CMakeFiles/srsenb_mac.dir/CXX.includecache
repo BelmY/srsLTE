@@ -67,12 +67,30 @@ pthread.h
 -
 
 ..//srsenb/hdr/stack/mac/scheduler_api.h
-thread
--
 scheduler_harq.h
 ../srsenb/hdr/stack/mac/scheduler_harq.h
 scheduler.h
 ../srsenb/hdr/stack/mac/scheduler.h
+pthread.h
+-
+stdio.h
+-
+string.h
+-
+netinet/in.h
+-
+stdlib.h
+-
+netdb.h
+-
+arpa/inet.h
+-
+unistd.h
+-
+signal.h
+-
+fcntl.h
+-
 
 ..//srsenb/hdr/stack/mac/scheduler_grid.h
 lib/include/srslte/interfaces/sched_interface.h
@@ -173,12 +191,30 @@ pthread.h
 -
 
 ../srsenb/hdr/stack/mac/scheduler_api.h
-thread
--
 scheduler_harq.h
 ../srsenb/hdr/stack/mac/scheduler_harq.h
 scheduler.h
 ../srsenb/hdr/stack/mac/scheduler.h
+pthread.h
+-
+stdio.h
+-
+string.h
+-
+netinet/in.h
+-
+stdlib.h
+-
+netdb.h
+-
+arpa/inet.h
+-
+unistd.h
+-
+signal.h
+-
+fcntl.h
+-
 
 ../srsenb/hdr/stack/mac/scheduler_grid.h
 lib/include/srslte/interfaces/sched_interface.h
@@ -240,6 +276,32 @@ pthread.h
 mac_metrics.h
 ../srsenb/hdr/stack/mac/mac_metrics.h
 
+/home/ggarcia/srsLTE/srsenb/hdr/stack/mac/scheduler_api.h
+scheduler_harq.h
+/home/ggarcia/srsLTE/srsenb/hdr/stack/mac/scheduler_harq.h
+scheduler.h
+/home/ggarcia/srsLTE/srsenb/hdr/stack/mac/scheduler.h
+pthread.h
+-
+stdio.h
+-
+string.h
+-
+netinet/in.h
+-
+stdlib.h
+-
+netdb.h
+-
+arpa/inet.h
+-
+unistd.h
+-
+signal.h
+-
+fcntl.h
+-
+
 /home/ggarcia/srsLTE/srsenb/src/stack/mac/mac.cc
 string.h
 -
@@ -271,6 +333,8 @@ srslte/srslte.h
 /home/ggarcia/srsLTE/srsenb/src/stack/mac/scheduler_api.cc
 srsenb/hdr/stack/mac/scheduler_api.h
 /home/ggarcia/srsLTE/srsenb/src/stack/mac/srsenb/hdr/stack/mac/scheduler_api.h
+../../../hdr/stack/mac/scheduler_api.h
+/home/ggarcia/srsLTE/srsenb/hdr/stack/mac/scheduler_api.h
 stdio.h
 -
 sys/socket.h
@@ -282,6 +346,8 @@ stdlib.h
 netinet/in.h
 -
 string.h
+-
+thread
 -
 
 /home/ggarcia/srsLTE/srsenb/src/stack/mac/scheduler_grid.cc

@@ -256,7 +256,7 @@ int srsenb::scheduler_api::work_imp(){
                 - process_http_request --> Function to be executed by the thread
                 - new_socket --> the socket with the new  connection
             */
-            std::thread http_handler_thread(&srsenb::scheduler_api::process_http_request, &new_socket);
+            std::thread http_handler_thread(&srsenb::scheduler_api::process_http_request, this, &new_socket);
             http_handler_thread.detach();
 
 
@@ -283,7 +283,7 @@ int srsenb::scheduler_api::work_imp(){
 
 void srsenb::scheduler_api::run_api_thread(){
     this->running = true;
-    std::thread api_thread(&srsenb::scheduler_api::work_imp);
+    std::thread api_thread(&srsenb::scheduler_api::work_imp, this);
     api_thread.detach();
 }
 void srsenb::scheduler_api::stop_api_thread(){

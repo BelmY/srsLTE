@@ -193,12 +193,30 @@ pthread.h
 -
 
 ../srsenb/hdr/stack/mac/scheduler_api.h
-thread
--
 scheduler_harq.h
 ../srsenb/hdr/stack/mac/scheduler_harq.h
 scheduler.h
 ../srsenb/hdr/stack/mac/scheduler.h
+pthread.h
+-
+stdio.h
+-
+string.h
+-
+netinet/in.h
+-
+stdlib.h
+-
+netdb.h
+-
+arpa/inet.h
+-
+unistd.h
+-
+signal.h
+-
+fcntl.h
+-
 
 ../srsenb/hdr/stack/mac/scheduler_grid.h
 lib/include/srslte/interfaces/sched_interface.h

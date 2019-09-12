@@ -247,6 +247,7 @@ srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o
  ../srsenb/hdr/stack/mac/scheduler_grid.h
  ../srsenb/hdr/stack/mac/scheduler_harq.h
  ../srsenb/hdr/stack/mac/scheduler_ue.h
+ /home/ggarcia/srsLTE/srsenb/hdr/stack/mac/scheduler_api.h
  /home/ggarcia/srsLTE/srsenb/src/stack/mac/scheduler_api.cc
  /usr/local/include/srslte/asn1/asn1_utils.h
  /usr/local/include/srslte/asn1/liblte_common.h
