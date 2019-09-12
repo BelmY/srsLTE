@@ -244,7 +244,6 @@ srsenb/src/srsenb: /usr/lib/x86_64-linux-gnu/libfftw3f.so
 srsenb/src/srsenb: /usr/local/lib/libuhd.so
 srsenb/src/srsenb: /usr/local/lib/libzmq.so
 srsenb/src/srsenb: /usr/lib/x86_64-linux-gnu/libmbedcrypto.so
-srsenb/src/srsenb: /usr/local/lib/libserved.so
 srsenb/src/srsenb: srsenb/src/CMakeFiles/srsenb.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable srsenb"
 	cd /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/srsenb/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/srsenb.dir/link.txt --verbose=$(VERBOSE)

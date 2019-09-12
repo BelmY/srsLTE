@@ -6,5 +6,5 @@ CXX_FLAGS =  -Wall -Wno-comment -Wno-reorder -Wno-unused-but-set-variable -Wno-u
 
 CXX_DEFINES = -DHAVE_MBEDTLS
 
-CXX_INCLUDES = -I/usr/local/include -I/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/lib/include -I/tmp/tmp.Sx9ws9eKT0/lib/include -I/tmp/tmp.Sx9ws9eKT0 -isystem /usr/local/lib/pkgconfig/../../include 
+CXX_INCLUDES = -I/usr/local/include -I/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/lib/include -I/tmp/tmp.Sx9ws9eKT0/lib/include -I/tmp/tmp.Sx9ws9eKT0 
 

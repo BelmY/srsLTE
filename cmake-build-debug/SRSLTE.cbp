@@ -6247,7 +6247,6 @@
 					<Add directory="/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/lib/include"/>
 					<Add directory="/tmp/tmp.Sx9ws9eKT0/lib/include"/>
 					<Add directory="/tmp/tmp.Sx9ws9eKT0"/>
-					<Add directory="/usr/local/lib/pkgconfig/../../include"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -6275,7 +6274,6 @@
 					<Add directory="/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/lib/include"/>
 					<Add directory="/tmp/tmp.Sx9ws9eKT0/lib/include"/>
 					<Add directory="/tmp/tmp.Sx9ws9eKT0"/>
-					<Add directory="/usr/local/lib/pkgconfig/../../include"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>

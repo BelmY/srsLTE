@@ -1,22 +1,22 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_358d6/fast"
-/usr/bin/make -f CMakeFiles/cmTC_358d6.dir/build.make CMakeFiles/cmTC_358d6.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_90f52/fast"
+/usr/bin/make -f CMakeFiles/cmTC_90f52.dir/build.make CMakeFiles/cmTC_90f52.dir/build
 make[1]: Entering directory '/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_358d6.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_358d6.dir/CheckSymbolExists.c.o   -c /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_358d6
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_358d6.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_358d6.dir/CheckSymbolExists.c.o  -o cmTC_358d6 
-CMakeFiles/cmTC_358d6.dir/CheckSymbolExists.c.o: In function `main':
+Building C object CMakeFiles/cmTC_90f52.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_90f52.dir/CheckSymbolExists.c.o   -c /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_90f52
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_90f52.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_90f52.dir/CheckSymbolExists.c.o  -o cmTC_90f52 
+CMakeFiles/cmTC_90f52.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_358d6.dir/build.make:97: recipe for target 'cmTC_358d6' failed
-make[1]: *** [cmTC_358d6] Error 1
+CMakeFiles/cmTC_90f52.dir/build.make:97: recipe for target 'cmTC_90f52' failed
+make[1]: *** [cmTC_90f52] Error 1
 make[1]: Leaving directory '/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_358d6/fast' failed
-make: *** [cmTC_358d6/fast] Error 2
+Makefile:126: recipe for target 'cmTC_90f52/fast' failed
+make: *** [cmTC_90f52/fast] Error 2
 
 File /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -36,34 +36,34 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_30229/fast"
-/usr/bin/make -f CMakeFiles/cmTC_30229.dir/build.make CMakeFiles/cmTC_30229.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_a07f0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a07f0.dir/build.make CMakeFiles/cmTC_a07f0.dir/build
 make[1]: Entering directory '/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_30229.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_30229.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_30229
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_30229.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_30229.dir/CheckFunctionExists.c.o  -o cmTC_30229 -lpthreads 
+Building C object CMakeFiles/cmTC_a07f0.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_a07f0.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_a07f0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a07f0.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_a07f0.dir/CheckFunctionExists.c.o  -o cmTC_a07f0 -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_30229.dir/build.make:97: recipe for target 'cmTC_30229' failed
-make[1]: *** [cmTC_30229] Error 1
+CMakeFiles/cmTC_a07f0.dir/build.make:97: recipe for target 'cmTC_a07f0' failed
+make[1]: *** [cmTC_a07f0] Error 1
 make[1]: Leaving directory '/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_30229/fast' failed
-make: *** [cmTC_30229/fast] Error 2
+Makefile:126: recipe for target 'cmTC_a07f0/fast' failed
+make: *** [cmTC_a07f0/fast] Error 2
 
 
 Performing C SOURCE FILE Test HAVE_AVX512 failed with the following output:
 Change Dir: /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_c14fe/fast"
-/usr/bin/make -f CMakeFiles/cmTC_c14fe.dir/build.make CMakeFiles/cmTC_c14fe.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_f2db3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f2db3.dir/build.make CMakeFiles/cmTC_f2db3.dir/build
 make[1]: Entering directory '/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_c14fe.dir/src.c.o
-/usr/bin/cc   -DHAVE_AVX512 -mavx512f -mavx512cd -mavx512bw -mavx512dq -DLV_HAVE_AVX512   -o CMakeFiles/cmTC_c14fe.dir/src.c.o   -c /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_c14fe
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c14fe.dir/link.txt --verbose=1
-/usr/bin/cc  -DHAVE_AVX512 -mavx512f -mavx512cd -mavx512bw -mavx512dq -DLV_HAVE_AVX512    -rdynamic CMakeFiles/cmTC_c14fe.dir/src.c.o  -o cmTC_c14fe 
+Building C object CMakeFiles/cmTC_f2db3.dir/src.c.o
+/usr/bin/cc   -DHAVE_AVX512 -mavx512f -mavx512cd -mavx512bw -mavx512dq -DLV_HAVE_AVX512   -o CMakeFiles/cmTC_f2db3.dir/src.c.o   -c /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_f2db3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f2db3.dir/link.txt --verbose=1
+/usr/bin/cc  -DHAVE_AVX512 -mavx512f -mavx512cd -mavx512bw -mavx512dq -DLV_HAVE_AVX512    -rdynamic CMakeFiles/cmTC_f2db3.dir/src.c.o  -o cmTC_f2db3 
 make[1]: Leaving directory '/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp'
 
 Return value: FAILED_TO_RUN
@@ -90,15 +90,15 @@ Source file was:
 Performing C++ SOURCE FILE Test HAVE_VISIBILITY_HIDDEN failed with the following output:
 Change Dir: /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_7350e/fast"
-/usr/bin/make -f CMakeFiles/cmTC_7350e.dir/build.make CMakeFiles/cmTC_7350e.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_f12a3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f12a3.dir/build.make CMakeFiles/cmTC_f12a3.dir/build
 make[1]: Entering directory '/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_7350e.dir/src.cxx.o
-/usr/bin/c++    -Wall -Wno-comment -Wno-reorder -Wno-unused-but-set-variable -Wno-unused-variable -Wtype-limits -std=c++11 -march=native -mfpmath=sse -mavx2 -DLV_HAVE_AVX2 -DLV_HAVE_AVX -DLV_HAVE_SSE -ggdb -O0 -DDEBUG_MODE -DBUILD_TYPE_DEBUG -DUSE_GLIBC_IPV6 -DHAVE_VISIBILITY_HIDDEN  -Wall -Wno-comment -Wno-write-strings -Winline -Wno-unused-result -Wformat -Wmissing-field-initializers -Wtype-limits -std=c99 -D_GNU_SOURCE -ggdb -O0 -DDEBUG_MODE -DBUILD_TYPE_DEBUG -march=native -mfpmath=sse -mavx2 -DLV_HAVE_AVX2 -DLV_HAVE_AVX -DLV_HAVE_SSE -mfma -DLV_HAVE_FMA   -fvisibility=hidden -o CMakeFiles/cmTC_7350e.dir/src.cxx.o -c /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+Building CXX object CMakeFiles/cmTC_f12a3.dir/src.cxx.o
+/usr/bin/c++    -Wall -Wno-comment -Wno-reorder -Wno-unused-but-set-variable -Wno-unused-variable -Wtype-limits -std=c++11 -march=native -mfpmath=sse -mavx2 -DLV_HAVE_AVX2 -DLV_HAVE_AVX -DLV_HAVE_SSE -ggdb -O0 -DDEBUG_MODE -DBUILD_TYPE_DEBUG -DUSE_GLIBC_IPV6 -DHAVE_VISIBILITY_HIDDEN  -Wall -Wno-comment -Wno-write-strings -Winline -Wno-unused-result -Wformat -Wmissing-field-initializers -Wtype-limits -std=c99 -D_GNU_SOURCE -ggdb -O0 -DDEBUG_MODE -DBUILD_TYPE_DEBUG -march=native -mfpmath=sse -mavx2 -DLV_HAVE_AVX2 -DLV_HAVE_AVX -DLV_HAVE_SSE -mfma -DLV_HAVE_FMA   -fvisibility=hidden -o CMakeFiles/cmTC_f12a3.dir/src.cxx.o -c /tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
 cc1plus: warning: command line option '-std=c99' is valid for C/ObjC but not for C++
-Linking CXX executable cmTC_7350e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7350e.dir/link.txt --verbose=1
-/usr/bin/c++   -Wall -Wno-comment -Wno-reorder -Wno-unused-but-set-variable -Wno-unused-variable -Wtype-limits -std=c++11 -march=native -mfpmath=sse -mavx2 -DLV_HAVE_AVX2 -DLV_HAVE_AVX -DLV_HAVE_SSE -ggdb -O0 -DDEBUG_MODE -DBUILD_TYPE_DEBUG -DUSE_GLIBC_IPV6 -DHAVE_VISIBILITY_HIDDEN  -Wall -Wno-comment -Wno-write-strings -Winline -Wno-unused-result -Wformat -Wmissing-field-initializers -Wtype-limits -std=c99 -D_GNU_SOURCE -ggdb -O0 -DDEBUG_MODE -DBUILD_TYPE_DEBUG -march=native -mfpmath=sse -mavx2 -DLV_HAVE_AVX2 -DLV_HAVE_AVX -DLV_HAVE_SSE -mfma -DLV_HAVE_FMA    -rdynamic CMakeFiles/cmTC_7350e.dir/src.cxx.o  -o cmTC_7350e 
+Linking CXX executable cmTC_f12a3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f12a3.dir/link.txt --verbose=1
+/usr/bin/c++   -Wall -Wno-comment -Wno-reorder -Wno-unused-but-set-variable -Wno-unused-variable -Wtype-limits -std=c++11 -march=native -mfpmath=sse -mavx2 -DLV_HAVE_AVX2 -DLV_HAVE_AVX -DLV_HAVE_SSE -ggdb -O0 -DDEBUG_MODE -DBUILD_TYPE_DEBUG -DUSE_GLIBC_IPV6 -DHAVE_VISIBILITY_HIDDEN  -Wall -Wno-comment -Wno-write-strings -Winline -Wno-unused-result -Wformat -Wmissing-field-initializers -Wtype-limits -std=c99 -D_GNU_SOURCE -ggdb -O0 -DDEBUG_MODE -DBUILD_TYPE_DEBUG -march=native -mfpmath=sse -mavx2 -DLV_HAVE_AVX2 -DLV_HAVE_AVX -DLV_HAVE_SSE -mfma -DLV_HAVE_FMA    -rdynamic CMakeFiles/cmTC_f12a3.dir/src.cxx.o  -o cmTC_f12a3 
 make[1]: Leaving directory '/tmp/tmp.Sx9ws9eKT0/cmake-build-debug/CMakeFiles/CMakeTmp'
 
 Source file was:
