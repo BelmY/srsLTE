@@ -47,7 +47,7 @@ bool srsenb::scheduler_api::assign_slice_to_user(int slice_id, uint16_t rnti) {
     return this->scheduler->get_dl_metric()->assign_slice_to_user(slice_id, rnti);
 }
 
-int srsenb::scheduler_api::process_http_request(int *socket_fd){
+void srsenb::scheduler_api::process_http_request(int *socket_fd){
 
     int local_socket_fd;
     struct sockaddr_in client_local;
@@ -66,7 +66,7 @@ int srsenb::scheduler_api::process_http_request(int *socket_fd){
     /* Take mutex in order to prevent other threads write in our socket */
     if((pthread_mutex_lock(&this->mutex)) == -1){
         printf("[ERROR] Can't take mutex for create a local copy\n");
-        return -1;
+        return;
     }
 
     /* Create a local copy for the socket */
@@ -78,13 +78,13 @@ int srsenb::scheduler_api::process_http_request(int *socket_fd){
     /* We notify the other threads that have finished copying */
     if((pthread_cond_signal(&this->copied)) == -1){
         printf("[ERROR] Problems sengind copied signal.\n");
-        return -1;
+        return;
     }
 
     /* Free mutex */
     if((pthread_mutex_unlock(&this->mutex)) == -1){
         printf("[ERROR] During mutex free.\n");
-        return -1;
+        return;
     }
 
     bytes_read = read(local_socket_fd, request, BUFFER_SIZE);
@@ -199,12 +199,6 @@ int srsenb::scheduler_api::work_imp(){
         /* Size of client address definition*/
         socklen_t size_client = sizeof(this->client_addr);
 
-        /* We initialize threads and set them detached, it's the only way to not wait for them */
-        pthread_t fd;
-        pthread_attr_t attributes;
-        pthread_attr_init (&attributes);
-        pthread_attr_setdetachstate(&attributes, PTHREAD_CREATE_DETACHED);
-
         /* Socket creation */
         if ((sd = socket(AF_INET, SOCK_STREAM, 0)) == -1){
             printf("[ERROR] Can't create the socket\n");
@@ -262,10 +256,16 @@ int srsenb::scheduler_api::work_imp(){
                 - process_http_request --> Function to be executed by the thread
                 - new_socket --> the socket with the new  connection
             */
-            if (pthread_create(&fd,&attributes,(void *)process_http_request, &new_socket) == -1){
+            std::thread http_handler_thread(&srsenb::scheduler_api::process_http_request, &new_socket);
+            http_handler_thread.detach();
+
+
+            /*
+            if (pthread_create(&fd, &attributes,scheduler_api::process_http_request, &new_socket) == -1){
                 printf("[ERROR] Can't create thread\n");
                 return -1;
             }
+             */
 
             pthread_mutex_lock(&this->mutex);
             /* wait until thread has finished copying the arguments */
@@ -283,7 +283,7 @@ int srsenb::scheduler_api::work_imp(){
 
 void srsenb::scheduler_api::run_api_thread(){
     this->running = true;
-    std::thread api_thread(&srsenb::scheduler_api::work_imp, this);
+    std::thread api_thread(&srsenb::scheduler_api::work_imp);
     api_thread.detach();
 }
 void srsenb::scheduler_api::stop_api_thread(){

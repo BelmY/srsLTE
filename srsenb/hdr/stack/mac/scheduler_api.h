@@ -50,6 +50,13 @@ namespace srsenb{
             bool set_ul_slice_mask(int slice_id, prbmask_t mask);
             bool assign_slice_to_user(int slice_id, uint16_t rnti);
 
+            /**
+             * Processes all the requests made to the server
+             * @param socket_fd: Opened socket to the client
+             * @return
+             */
+            void process_http_request(int *socket_fd);
+
         private:
             /**
              * Runs the main HTTP server thread
@@ -64,12 +71,6 @@ namespace srsenb{
             * Stops api thread
             */
             void stop_api_thread();
-            /**
-             * Processes all the requests made to the server
-             * @param socket_fd: Opened socket to the client
-             * @return
-             */
-            int process_http_request(int *socket_fd);
     };
 
 }
