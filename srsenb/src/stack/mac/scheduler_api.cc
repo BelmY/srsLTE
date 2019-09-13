@@ -14,15 +14,13 @@
 
 #define VERSION 23
 #define BUFFER_SIZE 8096
-#define ERROR 42
+//#define ERROR 42
 #define LOG   44
 #define FORBIDDEN 403
 #define NOT_FOUND 404
 
 srsenb::scheduler_api::scheduler_api(){
     this->running = false;
-    this->http_op_id["GET"]     = 1;
-    this->http_op_id["POST"]    = 2;
 }
 
 srsenb::scheduler_api::~scheduler_api() {
@@ -63,9 +61,10 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
     char reply[BUFFER_SIZE+1];
     long bytes_read;
 
-    char* request_line = NULL;
-    char* operation = NULL;
-    char* file_path = NULL;
+    char* request_line;
+    char* operation; 
+    char* file_path; 
+    char* version;
     char* file = NULL;
     char* ext = NULL;
     int f_size = 0;
@@ -118,25 +117,27 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
     request_line = strtok(request, "\n");
     operation = strtok(request_line, " ");
     file_path = strtok(NULL, " ");
+    version = strtok(NULL, " ");
 
-    ext = (char*)calloc(1, strlen(file_path));
-    ext = (strrchr(file_path, '.'))+1;
+    //ext = (char*)calloc(1, strlen(file_path));
+    //ext = (strrchr(file_path, '.'))+1;
+    //printf(" extension: %s \n", ext);
 
     if (strcmp(operation, "GET") == 0){
-        printf("scheduler_api> HTTP GET %s\n", ext);
+        printf("scheduler_api> HTTP GET %s\n", file_path);
         printf("\n");
-        sprintf(reply, "HTTP/1.1 200 OK\r\nContent-length: %i\r\nContent-Type: %s\r\n\r\n",f_size, ext);
+        sprintf(reply, "HTTP/1.1 200 OK\r\nContent-length: %i\r\nContent-Type: %s\r\n\r\n",f_size, file_path);
         write(local_socket_fd, reply, strlen(reply));
     }
     else if (strcmp(operation, "POST") == 0){
-        printf("scheduler_api> HTTP POST %s\n", ext);
+        printf("scheduler_api> HTTP POST %s\n", file_path);
         printf("\n");
-        sprintf(reply, "HTTP/1.1 200 OK\r\nContent-length: %i\r\nContent-Type: %s\r\n\r\n",f_size, ext);
+        sprintf(reply, "HTTP/1.1 200 OK\r\nContent-length: %i\r\nContent-Type: %s\r\n\r\n",f_size, file_path);
         write(local_socket_fd, reply, strlen(reply));
     }
     else{
         printf("scheduler_api> Operation %s not supported by the server. Just GET/POST requests are supported\n", operation);
-        sprintf(reply, "HTTP/1.0 405 Method Not Allowed\r\nContent-Length: %i\r\nContent-Type: %s\r\n\r\n", f_size,ext);
+        sprintf(reply, "HTTP/1.0 405 Method Not Allowed\r\nContent-Length: %i\r\nContent-Type: %s\r\n\r\n", f_size, file_path);
         write(local_socket_fd, reply, strlen(reply));
     }
     /*

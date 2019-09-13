@@ -32,3 +32,25 @@
 	/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xe7) [0x7fccd232fb97]
 	./srsenb(_start+0x2a) [0x56035f6f9a1a]
 
+--- command='./srsenb' version=19.6.0 signal=11 date='13/09/2019 10:40:26' ---
+	./srsenb(+0x25fcf8) [0x562c8ede4cf8]
+	/lib/x86_64-linux-gnu/libc.so.6(+0x3ef20) [0x7fc91084ff20]
+	/lib/x86_64-linux-gnu/libc.so.6(+0x18e5a1) [0x7fc91099f5a1]
+	/lib/x86_64-linux-gnu/libc.so.6(_IO_vfprintf+0x2143) [0x7fc91086e4d3]
+	/lib/x86_64-linux-gnu/libc.so.6(__printf_chk+0x11c) [0x7fc9109432ec]
+	./srsenb(_ZN6srsenb13scheduler_api20process_http_requestEPi+0x304) [0x562c8edca074]
+	/usr/lib/x86_64-linux-gnu/libstdc++.so.6(+0xbd66f) [0x7fc91127566f]
+	/lib/x86_64-linux-gnu/libpthread.so.0(+0x76db) [0x7fc9125826db]
+	/lib/x86_64-linux-gnu/libc.so.6(clone+0x3f) [0x7fc91093288f]
+
+--- command='./srsenb' version=19.6.0 signal=11 date='13/09/2019 10:58:26' ---
+	./srsenb(+0x25f7b8) [0x558be38ed7b8]
+	/lib/x86_64-linux-gnu/libc.so.6(+0x3ef20) [0x7f5aa4b0df20]
+	/lib/x86_64-linux-gnu/libc.so.6(+0x18e5a1) [0x7f5aa4c5d5a1]
+	/lib/x86_64-linux-gnu/libc.so.6(_IO_vfprintf+0x2143) [0x7f5aa4b2c4d3]
+	/lib/x86_64-linux-gnu/libc.so.6(__printf_chk+0x11c) [0x7f5aa4c012ec]
+	./srsenb(_ZN6srsenb13scheduler_api20process_http_requestEPi+0x127) [0x558be38d2de7]
+	/usr/lib/x86_64-linux-gnu/libstdc++.so.6(+0xbd66f) [0x7f5aa553366f]
+	/lib/x86_64-linux-gnu/libpthread.so.0(+0x76db) [0x7f5aa68406db]
+	/lib/x86_64-linux-gnu/libc.so.6(clone+0x3f) [0x7f5aa4bf088f]
+
