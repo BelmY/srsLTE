@@ -54,3 +54,20 @@
 	/lib/x86_64-linux-gnu/libpthread.so.0(+0x76db) [0x7f5aa68406db]
 	/lib/x86_64-linux-gnu/libc.so.6(clone+0x3f) [0x7f5aa4bf088f]
 
+--- command='./srsenb' version=19.6.0 signal=11 date='13/09/2019 12:46:29' ---
+	./srsenb(+0x25f758) [0x559bbeaa1758]
+	/lib/x86_64-linux-gnu/libc.so.6(+0x3ef20) [0x7f4fe7be2f20]
+	/lib/x86_64-linux-gnu/libpthread.so.0(+0x8bd8) [0x7f4fe9916bd8]
+	/usr/lib/x86_64-linux-gnu/libstdc++.so.6(_ZNSt6thread4joinEv+0x13) [0x7f4fe86088c3]
+	/usr/local/lib/libuhd.so.3.14.1(+0x8065d1) [0x7f4fe764d5d1]
+	/usr/local/lib/libuhd.so.3.14.1(+0x161dba) [0x7f4fe6fa8dba]
+	/usr/local/lib/libuhd.so.3.14.1(+0x5b6731) [0x7f4fe73fd731]
+	/usr/local/lib/libuhd.so.3.14.1(+0x5a96d0) [0x7f4fe73f06d0]
+	/usr/local/lib/libuhd.so.3.14.1(+0x5af67e) [0x7f4fe73f667e]
+	/usr/local/lib/libuhd.so.3.14.1(+0x2cd37a) [0x7f4fe711437a]
+	/usr/local/lib/libuhd.so.3.14.1(+0x324422) [0x7f4fe716b422]
+	/lib/x86_64-linux-gnu/libc.so.6(+0x43041) [0x7f4fe7be7041]
+	/lib/x86_64-linux-gnu/libc.so.6(+0x4313a) [0x7f4fe7be713a]
+	/lib/x86_64-linux-gnu/libpthread.so.0(+0x78f3) [0x7f4fe99158f3]
+	/lib/x86_64-linux-gnu/libc.so.6(clone+0x3f) [0x7f4fe7cc588f]
+
