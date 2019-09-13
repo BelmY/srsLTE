@@ -523,6 +523,9 @@ ZEROMQ_INCLUDE_DIRS:PATH=/usr/local/include
 //Path to a library.
 ZEROMQ_LIBRARIES:FILEPATH=/usr/local/lib/libzmq.so
 
+//The directory containing a CMake configuration file for nlohmann_json.
+nlohmann_json_DIR:PATH=nlohmann_json_DIR-NOTFOUND
+
 //Dependencies for target
 rrc_asn1_LIB_DEPENDS:STATIC=
 
@@ -908,6 +911,7 @@ HAVE_SSE_EXITCODE:INTERNAL=0
 HAVE_VISIBILITY_HIDDEN:INTERNAL=
 //ADVANCED property for variable: HGCOMMAND
 HGCOMMAND-ADVANCED:INTERNAL=1
+JSON_BuildTests:INTERNAL=OFF
 //ADVANCED property for variable: LIBCONFIGPP_INCLUDE_DIR
 LIBCONFIGPP_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: LIBCONFIGPP_LIBRARY

@@ -11,6 +11,7 @@
 #include <netinet/in.h>
 #include <string.h>
 #include <thread>
+#include "../../../hdr/json/json.hpp"
 
 #define VERSION 23
 #define BUFFER_SIZE 8096
@@ -60,9 +61,6 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
     char request[BUFFER_SIZE+1];
     char reply[BUFFER_SIZE+1];
     long bytes_read;
-
-    char* file = NULL;
-    char* ext = NULL;
     int f_size = 0;
 
     /* Take mutex in order to prevent other threads write in our socket */
@@ -74,7 +72,6 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
     /* Create a local copy for the socket */
     local_socket_fd = *socket_fd;
     client_local.sin_addr=client_addr.sin_addr;
-    client_local.sin_port=client_addr.sin_port;
     this->end_copy = 1;
 
     /* We notify the other threads that have finished copying */
@@ -88,7 +85,6 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
         printf("[ERROR] During mutex free.\n");
         return;
     }
-
     bytes_read = read(local_socket_fd, request, BUFFER_SIZE);
 
     // if we read 0, there is a connection closed or we are at end of file
@@ -122,7 +118,6 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
 
     char* operation = strtok(request_line, " ");
     char* file_path = strtok(NULL, " ");
-    char* version = strtok(NULL, " ");
 
     if (strcmp(operation, "GET") == 0){
         printf("scheduler_api> HTTP GET %s\n", file_path);
@@ -134,95 +129,26 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
         if (strcmp(content_type, "Content-Type: application/json\r") == 0){
             printf("scheduler_api> HTTP POST\n");
             printf("\n");
+
+            nlohmann::json json_data = nlohmann::json::parse(data);
+            printf("-*-*-*-*-* %s\n", json_data["username"].get<std::string>().c_str());
+            printf("\n");
+
             sprintf(reply, "HTTP/1.1 200 OK\r\nContent-length: %i\r\nContent-Type: %s\r\n\r\n",f_size, content_type);
             write(local_socket_fd, reply, strlen(reply));
-	}
-	else{
-    	    printf("scheduler_api> Content-Type %s not supported by the server. Only application/json content type.\n", content_type);
-            sprintf(reply, "HTTP/1.0 405 Method Not Allowed\r\nContent-Length: %i\r\nContent-Type: %s\r\n\r\n", f_size, file_path);
-            write(local_socket_fd, reply, strlen(reply));
-	}
+        }
+        else{
+                printf("scheduler_api> Content-Type %s not supported by the server. Only application/json content type.\n", content_type);
+                sprintf(reply, "HTTP/1.0 405 Method Not Allowed\r\nContent-Length: %i\r\nContent-Type: %s\r\n\r\n", f_size, file_path);
+                write(local_socket_fd, reply, strlen(reply));
+        }
     }
     else{
         printf("scheduler_api> Operation %s not supported by the server. Just GET/POST requests are supported\n", operation);
         sprintf(reply, "HTTP/1.0 405 Method Not Allowed\r\nContent-Length: %i\r\nContent-Type: %s\r\n\r\n", f_size, file_path);
         write(local_socket_fd, reply, strlen(reply));
     }
-    /*
-    switch (http_op_id[operation]){
-        // HTTP GET
-        case 1:
-            printf("scheduler_api> HTTP GET %s\n", ext);
-            printf("\n");
-            sprintf(reply, "HTTP/1.0 501 Not Implemented\r\nContent-Length: %i\r\nContent-Type: %s\r\n\r\n",f_size, "text/html");
-            write(local_socket_fd, reply, strlen(reply));
-            return;
-        // HTTP POST
-        case 2:
-            printf("scheduler_api> HTTP POST %s\n", ext);
-            printf("\n");
-            sprintf(reply, "HTTP/1.0 404 Not Found\r\nContent-Length: %i\r\nContent-Type: %s\r\n\r\n", f_size,ext);
-            write(local_socket_fd, reply, strlen(reply));
-            return;
-        default:
-            printf("scheduler_api> Operation %s not supported by the server. Just GET/POST requests are supported\n", operation);
-            sprintf(reply, "HTTP/1.1 200 OK\r\nContent-length: %i\r\nContent-Type: %s\r\n\r\n",f_size, ext);
-            write(local_socket_fd, reply, strlen(reply));
-            return;
-    }
-    */
-    /*
-    if (strcmp(operation, "GET") != 0){
-        printf("scheduler_api> Operation %s not supported by the server. Just GET request is supported\n", operation);
-    }
-    else{
-        if (strcmp(file_path, "/") == 0){
-            file_path = "index.html";
-            ext = "text/html";
-        }
-        else{
-            // Skip first slash
-            file_path++;
-            char *ext = (char*)calloc(1, strlen(file_path));
-            ext = (strrchr(file_path, '.'))+1;
-        }
 
-    }
-
-    if ((strcmp(ext, "image/png") != 0) && (strcmp(ext, "image/jpg") != 0) && (strcmp(ext, "text/html") != 0)){
-        printf("s> Format %s not supported.\n", ext);
-        int not_imp_file_fd = open("501.html", O_RDONLY);
-        f_size = getFileSize(not_imp_file_fd);
-        sprintf(reply, "HTTP/1.0 501 Not Implemented\r\nContent-Length: %i\r\nContent-Type: %s\r\n\r\n",f_size, "text/html");
-        write(local_socket_fd, reply, strlen(reply));
-
-        while((bytes_read = read(not_imp_file_fd, reply, BUFFER_SIZE)) > 0)
-            write(local_socket_fd, reply, bytes_read);
-    }
-    else{
-        int fd = open(file_path, O_RDONLY);
-
-        if (fd == -1){
-            printf("Error opening %s\n", file_path);
-            int error_file_fd = open("404.html", O_RDONLY);
-            f_size = getFileSize(error_file_fd);
-            sprintf(reply, "HTTP/1.0 404 Not Found\r\nContent-Length: %i\r\nContent-Type: %s\r\n\r\n", f_size,ext);
-            write(local_socket_fd, reply, strlen(reply));
-
-            while((bytes_read = read(error_file_fd, reply, BUFFER_SIZE)) > 0)
-                write(local_socket_fd, reply, bytes_read);
-        }
-        else{
-            f_size = getFileSize(fd);
-            printf("%s opened\n", file_path);
-            sprintf(reply, "HTTP/1.1 200 OK\r\nContent-length: %i\r\nContent-Type: %s\r\n\r\n",f_size, ext);
-            write(local_socket_fd, reply, strlen(reply));
-            // Send file in 8Kb blocks
-            while((bytes_read = read(fd, reply, BUFFER_SIZE)) > 0)
-                write(local_socket_fd, reply, bytes_read);
-        }
-    }
-    */
     sleep(1);
     /* Cerramos el socket */
     close(local_socket_fd);
