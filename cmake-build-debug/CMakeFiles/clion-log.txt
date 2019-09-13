@@ -1,82 +1,14 @@
-/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/make -DCMAKE_C_COMPILER=/usr/bin/cc -DCMAKE_CXX_COMPILER=/usr/bin/c++ -G "CodeBlocks - Unix Makefiles" /tmp/tmp.Sx9ws9eKT0
--- CMAKE_SYSTEM: Linux-4.15.0-58-generic
--- CMAKE_SYSTEM_PROCESSOR: x86_64
--- CMAKE_CXX_COMPILER: /usr/bin/c++
--- Could NOT find mkl (missing: MKL_LIBRARIES MKL_CORE MKL_ILP MKL_SEQ) 
--- FFTW3F LIBRARIES: /usr/lib/x86_64-linux-gnu/libfftw3f.so
--- FFTW3F STATIC LIBRARIES: /usr/lib/x86_64-linux-gnu/libfftw3f.a
--- FFTW3F INCLUDE DIRS: /usr/include
--- FFT_LIBRARIES: /usr/lib/x86_64-linux-gnu/libfftw3f.so
--- Checking for module 'polarssl'
---   No package 'polarssl' found
--- POLARSSL LIBRARIES: POLARSSL_LIBRARIES-NOTFOUND
--- POLARSSL STATIC LIBRARIES: POLARSSL_STATIC_LIBRARIES-NOTFOUND
--- POLARSSL INCLUDE DIRS: POLARSSL_INCLUDE_DIRS-NOTFOUND
--- Could NOT find POLARSSL (missing: POLARSSL_LIBRARIES POLARSSL_INCLUDE_DIRS) 
--- Checking for module 'mbedtls'
---   No package 'mbedtls' found
--- MBEDTLS LIBRARIES: /usr/lib/x86_64-linux-gnu/libmbedcrypto.so
--- MBEDTLS STATIC LIBRARIES: /usr/lib/x86_64-linux-gnu/libmbedcrypto.a
--- MBEDTLS INCLUDE DIRS: /usr/include
--- Checking for module 'libpcsclite'
---   No package 'libpcsclite' found
--- Could NOT find PCSCLITE (missing: PCSCLITE_LIBRARY PCSCLITE_INCLUDE_DIR) 
--- PCSC LIBRARIES: PCSCLITE_LIBRARY-NOTFOUND
--- PCSC INCLUDE DIRS: PCSCLITE_INCLUDE_DIR-NOTFOUND
--- UHD LIBRARIES /usr/local/lib/libuhd.so
--- UHD INCLUDE DIRS /usr/local/include
--- Checking for module 'libbladeRF'
---   No package 'libbladeRF' found
--- libbladeRF not found.
--- FINDING SOAPY.
--- Checking for module 'SoapySDR'
---   No package 'SoapySDR' found
--- libSOAPYSDR not found.
--- FINDING ZEROMQ.
--- Boost version: 1.65.1
--- Found the following Boost libraries:
---   program_options
--- SRSGUI LIBRARIES SRSGUI_LIBRARIES-NOTFOUND
--- SRSGUI INCLUDE DIRS SRSGUI_INCLUDE_DIRS-NOTFOUND
--- Could NOT find SRSGUI (missing: SRSGUI_LIBRARIES SRSGUI_INCLUDE_DIRS) 
--- SSE4.1 is enabled - target CPU must support it
--- AVX is enabled - target CPU must support it
--- AVX2 is enabled - target CPU must support it
--- FMA is enabled - target CPU must support it
--- Using default glibc header for IPv6 support.
--- SSE4.1 is enabled - target CPU must support it
--- AVX is enabled - target CPU must support it
--- AVX2 is enabled - target CPU must support it
--- FMA is enabled - target CPU must support it
--- CMAKE_C_FLAGS is  -Wall -Wno-comment -Wno-write-strings -Winline -Wno-unused-result -Wformat -Wmissing-field-initializers -Wtype-limits -std=c99 -D_GNU_SOURCE -ggdb -O0 -DDEBUG_MODE -DBUILD_TYPE_DEBUG -march=native -mfpmath=sse -mavx2 -DLV_HAVE_AVX2 -DLV_HAVE_AVX -DLV_HAVE_SSE -mfma -DLV_HAVE_FMA
--- CMAKE_CXX_FLAGS is  -Wall -Wno-comment -Wno-reorder -Wno-unused-but-set-variable -Wno-unused-variable -Wtype-limits -std=c++11 -march=native -mfpmath=sse -mavx2 -DLV_HAVE_AVX2 -DLV_HAVE_AVX -DLV_HAVE_SSE -ggdb -O0 -DDEBUG_MODE -DBUILD_TYPE_DEBUG -DUSE_GLIBC_IPV6
--- Using install prefix: /usr/local
--- Building for version: 19.6.0
---    examples will be installed.
--- No post-build command defined
--- Building with srsUE
--- No post-build-UE command defined
--- No post-build command defined
--- Building with srsENB
--- Found LibConfig++: /usr/lib/x86_64-linux-gnu/libconfig++.so
--- static LibConfig++ path: /usr/lib/x86_64-linux-gnu/libconfig++.a
--- Found LibConfig: /usr/lib/x86_64-linux-gnu/libconfig.so
--- static LibConfig path: /usr/lib/x86_64-linux-gnu/libconfig.a
--- Checking for module 'sctp'
---   No package 'sctp' found
--- SCTP LIBRARIES: /usr/lib/x86_64-linux-gnu/libsctp.so
--- SCTP INCLUDE DIRS: /usr/include
--- No post-build-ENB command defined
--- Building with srsEPC
--- Found LibConfig++: /usr/lib/x86_64-linux-gnu/libconfig++.so
--- static LibConfig++ path: /usr/lib/x86_64-linux-gnu/libconfig++.a
--- Found LibConfig: /usr/lib/x86_64-linux-gnu/libconfig.so
--- static LibConfig path: /usr/lib/x86_64-linux-gnu/libconfig.a
--- Checking for module 'sctp'
---   No package 'sctp' found
--- SCTP LIBRARIES: /usr/lib/x86_64-linux-gnu/libsctp.so
--- SCTP INCLUDE DIRS: /usr/include
--- No post-build-EPC command defined
--- Configuring done
--- Generating done
--- Build files have been written to: /tmp/tmp.Sx9ws9eKT0/cmake-build-debug
+CMake executable not found: /usr/bin/cmake Configure
+
+Cannot get compiler information:
+	Unable to create temporary file
+	Unable to create temporary file
+	Unable to create temporary file
+	Unable to create temporary file
+	Unable to create temporary file
+	Unable to create temporary file
+	Unable to create temporary file
+	Unable to create temporary file
+	Unable to create temporary file
+	Unable to create temporary file
+	Unable to create temporary file

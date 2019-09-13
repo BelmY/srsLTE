@@ -125,16 +125,21 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
     if (strcmp(operation, "GET") == 0){
         printf("scheduler_api> HTTP GET %s\n", ext);
         printf("\n");
+        sprintf(reply, "HTTP/1.1 200 OK\r\nContent-length: %i\r\nContent-Type: %s\r\n\r\n",f_size, ext);
+        write(local_socket_fd, reply, strlen(reply));
     }
-    else if {
+    else if (strcmp(operation, "POST") == 0){
         printf("scheduler_api> HTTP POST %s\n", ext);
         printf("\n");
+        sprintf(reply, "HTTP/1.1 200 OK\r\nContent-length: %i\r\nContent-Type: %s\r\n\r\n",f_size, ext);
+        write(local_socket_fd, reply, strlen(reply));
     }
     else{
         printf("scheduler_api> Operation %s not supported by the server. Just GET/POST requests are supported\n", operation);
-        return;
+        sprintf(reply, "HTTP/1.0 405 Method Not Allowed\r\nContent-Length: %i\r\nContent-Type: %s\r\n\r\n", f_size,ext);
+        write(local_socket_fd, reply, strlen(reply));
     }
-
+    /*
     switch (http_op_id[operation]){
         // HTTP GET
         case 1:
@@ -156,6 +161,7 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
             write(local_socket_fd, reply, strlen(reply));
             return;
     }
+    */
     /*
     if (strcmp(operation, "GET") != 0){
         printf("scheduler_api> Operation %s not supported by the server. Just GET request is supported\n", operation);
@@ -208,7 +214,7 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
         }
     }
     */
-    sleep(5);
+    sleep(1);
     /* Cerramos el socket */
     close(local_socket_fd);
     printf("scheduler_api> Conection Finished\n");
