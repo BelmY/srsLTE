@@ -241,12 +241,12 @@ srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler.cc.o: /usr/local/includ
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler.cc.o: /usr/local/include/srslte/version.h
 
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o: ../lib/include/srslte/interfaces/sched_interface.h
+srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o: ../srsenb/hdr/json/json.hpp
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o: ../srsenb/hdr/stack/mac/scheduler_api.h
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o: ../srsenb/hdr/stack/mac/scheduler.h
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o: ../srsenb/hdr/stack/mac/scheduler_grid.h
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o: ../srsenb/hdr/stack/mac/scheduler_harq.h
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o: ../srsenb/hdr/stack/mac/scheduler_ue.h
-srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o: ../srsenb/hdr/stack/mac/scheduler_api.h
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o: ../srsenb/src/stack/mac/scheduler_api.cc
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o: /usr/local/include/srslte/asn1/asn1_utils.h
 srsenb/src/stack/mac/CMakeFiles/srsenb_mac.dir/scheduler_api.cc.o: /usr/local/include/srslte/asn1/liblte_common.h

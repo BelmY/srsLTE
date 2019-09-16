@@ -94,8 +94,8 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
     }
     else request[0]=0;
 
-    printf("scheduler_api > Received: %s \n",request);
-    printf("\n");
+    //printf("scheduler_api > Received: %s \n",request);
+    //printf("\n");
     
     // Parse received HTTP request
     char* request_line = strtok(request, "\n");
@@ -129,10 +129,14 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
                     new_mask.set(i);
                 }
             }
-            printf("-*-*-*-*-*-*- %s %s %s", json_data["slice_id"].get<std::string>().c_str());
+            
             scheduler->get_dl_metric()->set_slice(std::stoi(json_data["slice_id"].get<std::string>().c_str()), new_mask);
             //TODO: Enable list of rntis in the received json
-            scheduler->get_dl_metric()->assign_slice_to_user(std::stoi(json_data["slice_id"].get<std::string>().c_str()), std::stoi(json_data["user"].get<std::string>().c_str()));
+	    uint16 user_rnti = std::stoi(json_data["user"].get<std::string>().c_str());
+            scheduler->get_dl_metric()->assign_slice_to_user(std::stoi(json_data["slice_id"].get<std::string>().c_str()), user_rnti);
+
+	    printf("[INFO] User 0x%x assigned to slice %i (Mask %s)\n", user_rnti, json_data["slice_id"].get<std::string>().c_str(), mask);
+	    printf("\n");
 
             sprintf(reply, "HTTP/1.1 200 OK\r\nContent-length: %i\r\nContent-Type: %s\r\n\r\n",f_size, content_type);
             write(local_socket_fd, reply, strlen(reply));
@@ -173,9 +177,9 @@ int srsenb::scheduler_api::work_imp(){
     // Child process
     else{
         // Ignoring all the signals, child never ends
-        signal(SIGINT, SIG_IGN);
-        signal(SIGCHLD, SIG_IGN);
-        signal(SIGHUP, SIG_IGN);
+        //signal(SIGINT, SIG_IGN);
+        //signal(SIGCHLD, SIG_IGN);
+        //signal(SIGHUP, SIG_IGN);
 
         /* Initialize mutex and conditional varialbes */
         pthread_mutex_init(&mutex, NULL);
