@@ -49,8 +49,7 @@ target_link_libraries(srsenb  srsenb_radio
                               ${Boost_LIBRARIES} 
                               ${SEC_LIBRARIES}
                               ${LIBCONFIGPP_LIBRARIES}
-                              ${SCTP_LIBRARIES}
-                              json::json)
+                              ${SCTP_LIBRARIES})
 
 if (RPATH)
   set_target_properties(srsenb PROPERTIES INSTALL_RPATH ".")

@@ -3,7 +3,6 @@
 //  - @github: https://github.com/GinesGarcia
 
 #include "srsenb/hdr/stack/mac/scheduler_api.h"
-#include "../../../hdr/stack/mac/scheduler_api.h"
 #include <stdio.h>
 #include <sys/socket.h>
 #include <unistd.h>
@@ -11,14 +10,9 @@
 #include <netinet/in.h>
 #include <string.h>
 #include <thread>
-#include "../../../hdr/json/json.hpp"
+#include "srsenb/hdr/json/json.hpp"
 
-#define VERSION 23
 #define BUFFER_SIZE 8096
-//#define ERROR 42
-#define LOG   44
-#define FORBIDDEN 403
-#define NOT_FOUND 404
 
 srsenb::scheduler_api::scheduler_api(){
     this->running = false;
@@ -63,24 +57,21 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
     long bytes_read;
     int f_size = 0;
 
-    /* Take mutex in order to prevent other threads write in our socket */
+    // Take mutex in order to prevent other threads write in our socket
     if((pthread_mutex_lock(&this->mutex)) == -1){
         printf("[ERROR] Can't take mutex for create a local copy\n");
         return;
     }
-
-    /* Create a local copy for the socket */
+    // Create a local copy for the socket
     local_socket_fd = *socket_fd;
     client_local.sin_addr=client_addr.sin_addr;
     this->end_copy = 1;
-
-    /* We notify the other threads that have finished copying */
+    // We notify the other threads that have finished copying
     if((pthread_cond_signal(&this->copied)) == -1){
         printf("[ERROR] Problems sengind copied signal.\n");
         return;
     }
-
-    /* Free mutex */
+    // Free mutex
     if((pthread_mutex_unlock(&this->mutex)) == -1){
         printf("[ERROR] During mutex free.\n");
         return;
@@ -126,19 +117,28 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
         write(local_socket_fd, reply, strlen(reply));
     }
     else if (strcmp(operation, "POST") == 0){
-        if (strcmp(content_type, "Content-Type: application/json\r") == 0){
+        if ((strcmp(content_type, "Content-Type: application/json\r") == 0) && (strcmp(file_path, "/slice") == 0)){
             printf("scheduler_api> HTTP POST\n");
             printf("\n");
 
             nlohmann::json json_data = nlohmann::json::parse(data);
-            printf("-*-*-*-*-* %s\n", json_data["username"].get<std::string>().c_str());
-            printf("\n");
+            rbgmask_t new_mask;
+            std::string mask = json_data["mask"].get<std::string>();
+            for (int i = 0; i < mask.length(); i++){
+                if (!std::atoi(reinterpret_cast<const char *>(mask.at(i)))){
+                    new_mask.set(i);
+                }
+            }
+            printf("-*-*-*-*-*-*- %s %s %s", json_data["slice_id"].get<std::string>().c_str());
+            scheduler->get_dl_metric()->set_slice(std::stoi(json_data["slice_id"].get<std::string>().c_str()), new_mask);
+            //TODO: Enable list of rntis in the received json
+            scheduler->get_dl_metric()->assign_slice_to_user(std::stoi(json_data["slice_id"].get<std::string>().c_str()), std::stoi(json_data["user"].get<std::string>().c_str()));
 
             sprintf(reply, "HTTP/1.1 200 OK\r\nContent-length: %i\r\nContent-Type: %s\r\n\r\n",f_size, content_type);
             write(local_socket_fd, reply, strlen(reply));
         }
         else{
-                printf("scheduler_api> Content-Type %s not supported by the server. Only application/json content type.\n", content_type);
+                printf("scheduler_api> Content-Type %s  or path not allowed by the server. application/json and /slice are allowed.\n", content_type);
                 sprintf(reply, "HTTP/1.0 405 Method Not Allowed\r\nContent-Length: %i\r\nContent-Type: %s\r\n\r\n", f_size, file_path);
                 write(local_socket_fd, reply, strlen(reply));
         }

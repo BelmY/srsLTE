@@ -31,8 +31,6 @@ namespace srsenb{
         };
         // Client address
         struct sockaddr_in client_addr;
-        std::map<char*,int> http_op_id;
-
         // Concurrency control variables
         pthread_mutex_t mutex;
         pthread_cond_t copied;
