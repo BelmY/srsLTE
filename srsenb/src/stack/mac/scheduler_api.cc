@@ -122,20 +122,21 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
             printf("\n");
 
             nlohmann::json json_data = nlohmann::json::parse(data);
-            rbgmask_t new_mask;
+	    // inicializar segun el numero de rbgs
+            rbgmask_t new_mask(17);
             std::string mask = json_data["mask"].get<std::string>();
             for (int i = 0; i < mask.length(); i++){
-                if (!std::atoi(reinterpret_cast<const char *>(mask.at(i)))){
+		if (mask[i] == '1'){
                     new_mask.set(i);
                 }
             }
             
             scheduler->get_dl_metric()->set_slice(std::stoi(json_data["slice_id"].get<std::string>().c_str()), new_mask);
             //TODO: Enable list of rntis in the received json
-	    uint16 user_rnti = std::stoi(json_data["user"].get<std::string>().c_str());
+	    uint16 user_rnti = static_cast<uint16_t>(std::stoi(json_data["user"].get<std::string>().c_str()));
             scheduler->get_dl_metric()->assign_slice_to_user(std::stoi(json_data["slice_id"].get<std::string>().c_str()), user_rnti);
 
-	    printf("[INFO] User 0x%x assigned to slice %i (Mask %s)\n", user_rnti, json_data["slice_id"].get<std::string>().c_str(), mask);
+	    printf("[INFO] User 0x%x assigned to slice %s (Mask %s)\n", user_rnti, json_data["slice_id"].get<std::string>().c_str(), mask.c_str());
 	    printf("\n");
 
             sprintf(reply, "HTTP/1.1 200 OK\r\nContent-length: %i\r\nContent-Type: %s\r\n\r\n",f_size, content_type);
