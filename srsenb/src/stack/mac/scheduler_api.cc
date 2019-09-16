@@ -167,100 +167,105 @@ int srsenb::scheduler_api::work_imp(sched* scheduler){
     int port, sd, new_socket;
     int pid;
     struct sockaddr_in server_addr;
-
+    
+    /*
+    rbgmask_t new_mask(17);
+    std::string mask = "11111100000000000";
+    for (int i = 0; i < mask.length(); i++){
+        if (mask[i] == '1'){
+            new_mask.set(i);
+        }
+    }
+    scheduler->get_dl_metric()->set_slice(1, new_mask);
+    uint16 user_rnti = static_cast<uint16_t>(std::stoi("47"));
+    scheduler->get_dl_metric()->assign_slice_to_user(1, user_rnti);
+    user_rnti = static_cast<uint16_t>(std::stoi("48"));
+    scheduler->get_dl_metric()->assign_slice_to_user(1, user_rnti);
+    user_rnti = static_cast<uint16_t>(std::stoi("49"));
+    scheduler->get_dl_metric()->assign_slice_to_user(1, user_rnti);
+    */
     port = atoi(this->PORT);
 
-    pid = fork();
-    // Main process
-    if (pid != 0){
-        return 0;
+    /* Initialize mutex and conditional varialbes */
+    pthread_mutex_init(&mutex, NULL);
+    pthread_cond_init(&copied, NULL);
+    /* Size of client address definition*/
+    socklen_t size_client = sizeof(this->client_addr);
+
+    /* Socket creation */
+    if ((sd = socket(AF_INET, SOCK_STREAM, 0)) == -1){
+        printf("[ERROR] Can't create the socket\n");
+        return -1;
     }
-    // Child process
-    else{
-        /* Initialize mutex and conditional varialbes */
-        pthread_mutex_init(&mutex, NULL);
-        pthread_cond_init(&copied, NULL);
 
-        /* Size of client address definition*/
-        socklen_t size_client = sizeof(this->client_addr);
+    /* socket parameters */
+    bzero((char *)&server_addr, sizeof(server_addr));		// fill it with zero
+    server_addr.sin_family = AF_INET;						// Domain (Internet)
+    server_addr.sin_addr.s_addr = INADDR_ANY;				// All addresses
+    server_addr.sin_port=htons(port);						// Given port
 
-        /* Socket creation */
-        if ((sd = socket(AF_INET, SOCK_STREAM, 0)) == -1){
-            printf("[ERROR] Can't create the socket\n");
-            return -1;
-        }
-
-        /* socket parameters */
-        bzero((char *)&server_addr, sizeof(server_addr));		// fill it with zero
-        server_addr.sin_family = AF_INET;						// Domain (Internet)
-        server_addr.sin_addr.s_addr = INADDR_ANY;				// All addresses
-        server_addr.sin_port=htons(port);						// Given port
-
-        /* Socket binding */
-        if((bind(sd, (struct sockaddr *) &server_addr, sizeof(server_addr))) == -1){
-            printf("[ERROR] Can't bind socket to server address\n");
-            return -1;
-        }
-
-        /* Get server ip */
-        struct sockaddr_in local;
-        char server_name[255];
-        gethostname(server_name, 255);											// Take the system name
-        local.sin_addr = *(struct in_addr*) gethostbyname(server_name)->h_addr; // Take the first host address
-        char *ip = inet_ntoa(local.sin_addr);									// Translate the ip to the correct format
-
-        printf("scheduler_api > init <%s>:<%d>\n", ip, ntohs(server_addr.sin_port));
-
-        /* Start listening and set maximun queue of pending connections to 64*/
-        if((listen(sd, 64)) == -1){
-            printf("[ERROR] Can't start listening\n");
-            return -1;
-        }
-
-        while(this->running){
-
-            printf("scheduler_api> waiting for requests ...\n");
-
-            /* Accepts connections */
-            if((new_socket = accept(sd, (struct sockaddr *)&client_addr,&size_client)) == -1){
-                printf("[ERROR] Can't accept client conection\n");
-                return -1;
-            }
-
-            /* Get client ip */
-            struct sockaddr_in local_client;
-            char client_name[255];
-            gethostname(client_name, 255);
-            local_client.sin_addr =*(struct in_addr*) gethostbyname(client_name)->h_addr;
-            char *client_ip = inet_ntoa(local_client.sin_addr);
-
-            printf("scheduler_api> accept <%s>:<%d>\n", client_ip, ntohs(client_addr.sin_port));
-
-            /* Create a thead that will be in charge of  manage the request. We pass the following parameters:
-                - attributes --> thread parameters
-                - process_http_request --> Function to be executed by the thread
-                - new_socket --> the socket with the new  connection
-            */
-            std::thread http_handler_thread(&srsenb::scheduler_api::process_http_request, this, &new_socket, std::ref(scheduler));
-            http_handler_thread.detach();
-
-            pthread_mutex_lock(&this->mutex);
-            /* wait until thread has finished copying the arguments */
-            while(!this->end_copy) {
-                pthread_cond_wait(&this->copied, &this->mutex);
-            }
-            this->end_copy=0;
-
-            pthread_mutex_unlock(&this->mutex);
-        }
-        close (sd);
-        printf("scheduler_api> Closing server\n");
-        exit(0);
+    /* Socket binding */
+    if((bind(sd, (struct sockaddr *) &server_addr, sizeof(server_addr))) == -1){
+        printf("[ERROR] Can't bind socket to server address\n");
+        return -1;
     }
+
+    /* Get server ip */
+    struct sockaddr_in local;
+    char server_name[255];
+    gethostname(server_name, 255);											// Take the system name
+    local.sin_addr = *(struct in_addr*) gethostbyname(server_name)->h_addr; // Take the first host address
+    char *ip = inet_ntoa(local.sin_addr);									// Translate the ip to the correct format
+
+    printf("scheduler_api > init <%s>:<%d>\n", ip, ntohs(server_addr.sin_port));
+
+    /* Start listening and set maximun queue of pending connections to 64*/
+    if((listen(sd, 64)) == -1){
+        printf("[ERROR] Can't start listening\n");
+        return -1;
+    }
+
+    while(this->running){
+        printf("scheduler_api> waiting for requests ...\n");
+
+        /* Accepts connections */
+        if((new_socket = accept(sd, (struct sockaddr *)&client_addr,&size_client)) == -1){
+            printf("[ERROR] Can't accept client conection\n");
+            return -1;
+        }
+
+        /* Get client ip */
+        struct sockaddr_in local_client;
+        char client_name[255];
+        gethostname(client_name, 255);
+        local_client.sin_addr =*(struct in_addr*) gethostbyname(client_name)->h_addr;
+        char *client_ip = inet_ntoa(local_client.sin_addr);
+        printf("scheduler_api> accept <%s>:<%d>\n", client_ip, ntohs(client_addr.sin_port));
+
+        /* Create a thead that will be in charge of  manage the request. We pass the following parameters:
+            - attributes --> thread parameters
+            - process_http_request --> Function to be executed by the thread
+            - new_socket --> the socket with the new  connection
+        */
+        std::thread http_handler_thread(&srsenb::scheduler_api::process_http_request, this, &new_socket, std::ref(scheduler));
+        http_handler_thread.detach();
+        pthread_mutex_lock(&this->mutex);
+        /* wait until thread has finished copying the arguments */
+        while(!this->end_copy) {
+            pthread_cond_wait(&this->copied, &this->mutex);
+        }
+        this->end_copy=0;
+
+        pthread_mutex_unlock(&this->mutex);
+    }
+    close (sd);
+    printf("scheduler_api> Closing server\n");
+    exit(0);
 }
 
 void srsenb::scheduler_api::run_api_thread(){
     this->running = true;
+
     std::thread api_thread(&srsenb::scheduler_api::work_imp, this, std::ref(this->scheduler));
     api_thread.detach();
 }

@@ -32,6 +32,7 @@
 
 #include "srsenb/hdr/stack/mac/mac.h"
 #include "srslte/common/log.h"
+#include <iostream>
 
 //#define WRITE_SIB_PCAP
 using namespace asn1::rrc;
@@ -92,8 +93,8 @@ bool mac::init(const mac_args_t&        args_,
       scheduler.set_metric(&sched_metric_dl_slicing, &sched_metric_ul_slicing);
 
     // Set default scheduler configuration 
-    scheduler.set_sched_cfg(&args.sched);
-
+    scheduler.set_sched_cfg(&args.sched);    
+    
     sched_api.init(&scheduler);
 
     // Init softbuffer for SI messages

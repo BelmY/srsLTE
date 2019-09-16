@@ -63,7 +63,7 @@ bool dl_metric_slicing::find_allocation(uint32_t nof_rbg, rbgmask_t* rbgmask, ui
     }
     (*rbgmask) &= mask_to_apply;
     */
-
+    
     // Apply the mask only if the rnti is assigned to a slice
     if (!assigned_slice.empty()){
         if (assigned_slice.find(rnti) != assigned_slice.end()){
@@ -296,11 +296,13 @@ ul_harq_proc* ul_metric_slicing::allocate_user_newtx_prbs(sched_ue* user)
  *********************/
 
     bool dl_metric_slicing::set_slice(int slice_id, rbgmask_t mask){
-	return false;
+	printf("slicing PASO\n");
+	this->slices[slice_id] = mask;
+	return true;
     }
 
     bool dl_metric_slicing::assign_slice_to_user(int slice_id, uint16 rnti){
-        //this.assigned_slice[rnti] = slice_id;
+        this->assigned_slice[rnti] = slice_id;
 	return true;
     }
 }
