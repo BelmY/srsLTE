@@ -52,14 +52,14 @@ namespace srsenb{
              * @param socket_fd: Opened socket to the client
              * @return
              */
-            void process_http_request(int *socket_fd);
+            void process_http_request(int *socket_fd, sched* scheduler);
 
         private:
             /**
              * Runs the main HTTP server thread
              * @return
              */
-            int work_imp();
+            int work_imp(sched* scheduler);
             /**
             * Starts api thread
             */

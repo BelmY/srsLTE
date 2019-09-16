@@ -47,7 +47,7 @@ bool srsenb::scheduler_api::assign_slice_to_user(int slice_id, uint16_t rnti) {
     return this->scheduler->get_dl_metric()->assign_slice_to_user(slice_id, rnti);
 }
 
-void srsenb::scheduler_api::process_http_request(int *socket_fd){
+void srsenb::scheduler_api::process_http_request(int *socket_fd, sched* scheduler){
 
     int local_socket_fd;
     struct sockaddr_in client_local;
@@ -122,18 +122,18 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
             printf("\n");
 
             nlohmann::json json_data = nlohmann::json::parse(data);
-	    // inicializar segun el numero de rbgs
+	        // inicializar segun el numero de rbgs
             rbgmask_t new_mask(17);
             std::string mask = json_data["mask"].get<std::string>();
             for (int i = 0; i < mask.length(); i++){
-		if (mask[i] == '1'){
+                if (mask[i] == '1'){
                     new_mask.set(i);
                 }
             }
             
             scheduler->get_dl_metric()->set_slice(std::stoi(json_data["slice_id"].get<std::string>().c_str()), new_mask);
             //TODO: Enable list of rntis in the received json
-	    uint16 user_rnti = static_cast<uint16_t>(std::stoi(json_data["user"].get<std::string>().c_str()));
+	        uint16 user_rnti = static_cast<uint16_t>(std::stoi(json_data["user"].get<std::string>().c_str()));
             scheduler->get_dl_metric()->assign_slice_to_user(std::stoi(json_data["slice_id"].get<std::string>().c_str()), user_rnti);
 
 	    printf("[INFO] User 0x%x assigned to slice %s (Mask %s)\n", user_rnti, json_data["slice_id"].get<std::string>().c_str(), mask.c_str());
@@ -163,7 +163,7 @@ void srsenb::scheduler_api::process_http_request(int *socket_fd){
 
 }
 
-int srsenb::scheduler_api::work_imp(){
+int srsenb::scheduler_api::work_imp(sched* scheduler){
     int port, sd, new_socket;
     int pid;
     struct sockaddr_in server_addr;
@@ -177,11 +177,6 @@ int srsenb::scheduler_api::work_imp(){
     }
     // Child process
     else{
-        // Ignoring all the signals, child never ends
-        //signal(SIGINT, SIG_IGN);
-        //signal(SIGCHLD, SIG_IGN);
-        //signal(SIGHUP, SIG_IGN);
-
         /* Initialize mutex and conditional varialbes */
         pthread_mutex_init(&mutex, NULL);
         pthread_cond_init(&copied, NULL);
@@ -246,7 +241,7 @@ int srsenb::scheduler_api::work_imp(){
                 - process_http_request --> Function to be executed by the thread
                 - new_socket --> the socket with the new  connection
             */
-            std::thread http_handler_thread(&srsenb::scheduler_api::process_http_request, this, &new_socket);
+            std::thread http_handler_thread(&srsenb::scheduler_api::process_http_request, this, &new_socket, std::ref(scheduler));
             http_handler_thread.detach();
 
             pthread_mutex_lock(&this->mutex);
@@ -266,7 +261,7 @@ int srsenb::scheduler_api::work_imp(){
 
 void srsenb::scheduler_api::run_api_thread(){
     this->running = true;
-    std::thread api_thread(&srsenb::scheduler_api::work_imp, this);
+    std::thread api_thread(&srsenb::scheduler_api::work_imp, this, std::ref(this->scheduler));
     api_thread.detach();
 }
 void srsenb::scheduler_api::stop_api_thread(){
